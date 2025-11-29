@@ -1891,6 +1891,69 @@ function getMainPageHTML() {
           <input type="text" id="interests" placeholder="\uC608: \uC694\uB9AC, \uC5EC\uD589, \uB3C5\uC11C" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
         </div>
 
+        <!-- \uC2E0\uBD84\uC99D \uC0AC\uC9C4 \uC5C5\uB85C\uB4DC -->
+        <div class="border-2 border-dashed border-pink-300 rounded-lg p-6 bg-pink-50">
+          <label class="block text-gray-700 font-bold mb-3" id="label-id-photo">
+            <i class="fas fa-id-card text-pink-600"></i> \uC2E0\uBD84\uC99D \uC778\uC99D \uC0AC\uC9C4 \uC5C5\uB85C\uB4DC
+          </label>
+          
+          <!-- \uC608\uC2DC \uC0AC\uC9C4 \uD45C\uC2DC -->
+          <div class="mb-4 flex flex-col md:flex-row gap-4 items-center">
+            <div class="w-full md:w-1/3">
+              <img src="https://www.genspark.ai/api/files/s/gQ21EItf" alt="\uC2E0\uBD84\uC99D \uC608\uC2DC" class="w-full rounded-lg shadow-md">
+            </div>
+            <div class="w-full md:w-2/3 text-sm text-gray-700" id="id-photo-instruction">
+              <p class="font-semibold text-pink-600 mb-2">\u{1F4F8} \uC774\uB807\uAC8C \uCD2C\uC601\uD574\uC8FC\uC138\uC694:</p>
+              <ul class="list-disc list-inside space-y-1">
+                <li>\uC5EC\uAD8C, \uC6B4\uC804\uBA74\uD5C8\uC99D, \uC8FC\uBBFC\uB4F1\uB85D\uC99D \uC911 \uD558\uB098\uB97C \uC190\uC5D0 \uB4E4\uACE0</li>
+                <li>\uBCF8\uC778 \uC5BC\uAD74\uACFC \uC2E0\uBD84\uC99D\uC774 \uD568\uAED8 \uB098\uC624\uB3C4\uB85D \uCD2C\uC601</li>
+                <li>\uC2E0\uBD84\uC99D\uC758 \uC0AC\uC9C4\uACFC \uC815\uBCF4\uAC00 \uC120\uBA85\uD558\uAC8C \uBCF4\uC5EC\uC57C \uD569\uB2C8\uB2E4</li>
+                <li>\uC870\uBA85\uC774 \uBC1D\uC740 \uACF3\uC5D0\uC11C \uCD2C\uC601\uD574\uC8FC\uC138\uC694</li>
+              </ul>
+            </div>
+          </div>
+
+          <input type="file" id="idPhoto" accept="image/*" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 bg-white">
+          <div id="photoPreview" class="mt-3 hidden">
+            <img id="previewImage" class="w-full max-w-md mx-auto rounded-lg shadow-md">
+          </div>
+        </div>
+
+        <!-- \uC548\uC804\uC815\uCC45 \uC548\uB0B4 -->
+        <div class="bg-gradient-to-r from-red-50 to-orange-50 border-l-4 border-red-500 p-6 rounded-lg shadow-md">
+          <h3 class="font-bold text-lg text-red-700 mb-3 flex items-center" id="safety-policy-title">
+            <i class="fas fa-shield-alt mr-2"></i> \uB85C\uB9E8\uC2A4\uC2A4\uCEA0 \uBC0F \uBCF4\uC774\uC2A4\uD53C\uC2F1 \uC608\uBC29\uC744 \uC704\uD55C \uC548\uC804\uC815\uCC45 \uC548\uB0B4
+          </h3>
+          <p class="text-sm text-gray-700 mb-3" id="safety-cooperation">
+            \uC548\uC804\uD55C \uC11C\uBE44\uC2A4 \uC774\uC6A9\uC744 \uC704\uD574 \uD611\uC870 \uBD80\uD0C1\uB4DC\uB9BD\uB2C8\uB2E4.<br>
+            \uD68C\uC6D0\uAC00\uC785 \uC2DC \uC544\uB798 \uC0AC\uD56D\uC744 \uBC18\uB4DC\uC2DC \uC81C\uCD9C\uD574\uC57C \uAC00\uC785\uC774 \uAC00\uB2A5\uD569\uB2C8\uB2E4.
+          </p>
+          
+          <div class="bg-white p-4 rounded-lg mb-3 border-l-4 border-yellow-500">
+            <h4 class="font-bold text-yellow-700 mb-2" id="vip-requirements">
+              <i class="fas fa-crown mr-1"></i> VIP \uD68C\uC6D0\uAC00\uC785 \uC2DC \uD544\uC218 \uC81C\uCD9C \uC0AC\uD56D
+            </h4>
+            <p class="text-sm text-gray-700" id="vip-description">
+              \uC5EC\uAD8C, \uC6B4\uC804\uBA74\uD5C8\uC99D, \uC8FC\uBBFC\uB4F1\uB85D\uC99D \uB4F1 \uBCF8\uC778 \uC2E0\uBD84\uC99D\uC744 \uC190\uC5D0 \uB4E4\uACE0 \uC5BC\uAD74\uACFC \uD568\uAED8 \uCD2C\uC601\uD55C \uC0AC\uC9C4\uC744 \uC5C5\uB85C\uB4DC\uD574\uC57C \uD569\uB2C8\uB2E4.<br>
+              \uBCF8\uC778 \uD655\uC778\uC744 \uC704\uD55C \uC808\uCC28\uC774\uBA70, \uC81C\uCD9C \uC815\uBCF4\uB294 \uC548\uC804\uD558\uAC8C \uBCF4\uD638\uB429\uB2C8\uB2E4.
+            </p>
+          </div>
+
+          <div class="bg-white p-4 rounded-lg border-l-4 border-blue-500">
+            <h4 class="font-bold text-blue-700 mb-2" id="regular-requirements">
+              <i class="fas fa-users mr-1"></i> \uC77C\uBC18 \uD68C\uC6D0\uAC00\uC785 \uD544\uC218 \uC0AC\uD56D
+            </h4>
+            <p class="text-sm text-gray-700" id="regular-description">
+              \uAE30\uC874\uC5D0 \uC0AC\uC6A9 \uC911\uC778 SNS \uACC4\uC815(\uC608: \uC18C\uC15C \uB124\uD2B8\uC6CC\uD06C) 3\uAC1C \uC774\uC0C1\uC744 \uB4F1\uB85D\uD574\uC57C \uD68C\uC6D0\uAC00\uC785\uC774 \uAC00\uB2A5\uD569\uB2C8\uB2E4.
+            </p>
+          </div>
+
+          <p class="text-xs text-gray-600 mt-3 italic" id="safety-note">
+            <i class="fas fa-exclamation-circle text-red-500"></i> 
+            \uADC0\uCC2E\uC73C\uC2DC\uB354\uB77C\uB3C4, \uC0AC\uAE30 \uBC29\uC9C0 \uBC0F \uC548\uC804\uD55C \uCEE4\uBBA4\uB2C8\uD2F0 \uC6B4\uC601\uC744 \uC704\uD55C \uD544\uC218 \uC808\uCC28\uC774\uBBC0\uB85C \uD611\uC870 \uBD80\uD0C1\uB4DC\uB9BD\uB2C8\uB2E4.
+          </p>
+        </div>
+
         <button type="submit" class="w-full bg-pink-600 text-white font-bold py-3 rounded-lg hover:bg-pink-700 transition" id="btn-register">
           <i class="fas fa-paper-plane"></i> \uB4F1\uB85D\uD558\uAE30
         </button>
@@ -1957,6 +2020,15 @@ function getMainPageHTML() {
         'label-country': '\uAD6D\uAC00',
         'label-about': '\uC790\uAE30\uC18C\uAC1C',
         'label-interests': '\uAD00\uC2EC\uC0AC',
+        'label-id-photo': '\uC2E0\uBD84\uC99D \uC778\uC99D \uC0AC\uC9C4 \uC5C5\uB85C\uB4DC',
+        'id-photo-instruction': '<p class="font-semibold text-pink-600 mb-2">\u{1F4F8} \uC774\uB807\uAC8C \uCD2C\uC601\uD574\uC8FC\uC138\uC694:</p><ul class="list-disc list-inside space-y-1"><li>\uC5EC\uAD8C, \uC6B4\uC804\uBA74\uD5C8\uC99D, \uC8FC\uBBFC\uB4F1\uB85D\uC99D \uC911 \uD558\uB098\uB97C \uC190\uC5D0 \uB4E4\uACE0</li><li>\uBCF8\uC778 \uC5BC\uAD74\uACFC \uC2E0\uBD84\uC99D\uC774 \uD568\uAED8 \uB098\uC624\uB3C4\uB85D \uCD2C\uC601</li><li>\uC2E0\uBD84\uC99D\uC758 \uC0AC\uC9C4\uACFC \uC815\uBCF4\uAC00 \uC120\uBA85\uD558\uAC8C \uBCF4\uC5EC\uC57C \uD569\uB2C8\uB2E4</li><li>\uC870\uBA85\uC774 \uBC1D\uC740 \uACF3\uC5D0\uC11C \uCD2C\uC601\uD574\uC8FC\uC138\uC694</li></ul>',
+        'safety-policy-title': '\uB85C\uB9E8\uC2A4\uC2A4\uCEA0 \uBC0F \uBCF4\uC774\uC2A4\uD53C\uC2F1 \uC608\uBC29\uC744 \uC704\uD55C \uC548\uC804\uC815\uCC45 \uC548\uB0B4',
+        'safety-cooperation': '\uC548\uC804\uD55C \uC11C\uBE44\uC2A4 \uC774\uC6A9\uC744 \uC704\uD574 \uD611\uC870 \uBD80\uD0C1\uB4DC\uB9BD\uB2C8\uB2E4.<br>\uD68C\uC6D0\uAC00\uC785 \uC2DC \uC544\uB798 \uC0AC\uD56D\uC744 \uBC18\uB4DC\uC2DC \uC81C\uCD9C\uD574\uC57C \uAC00\uC785\uC774 \uAC00\uB2A5\uD569\uB2C8\uB2E4.',
+        'vip-requirements': 'VIP \uD68C\uC6D0\uAC00\uC785 \uC2DC \uD544\uC218 \uC81C\uCD9C \uC0AC\uD56D',
+        'vip-description': '\uC5EC\uAD8C, \uC6B4\uC804\uBA74\uD5C8\uC99D, \uC8FC\uBBFC\uB4F1\uB85D\uC99D \uB4F1 \uBCF8\uC778 \uC2E0\uBD84\uC99D\uC744 \uC190\uC5D0 \uB4E4\uACE0 \uC5BC\uAD74\uACFC \uD568\uAED8 \uCD2C\uC601\uD55C \uC0AC\uC9C4\uC744 \uC5C5\uB85C\uB4DC\uD574\uC57C \uD569\uB2C8\uB2E4.<br>\uBCF8\uC778 \uD655\uC778\uC744 \uC704\uD55C \uC808\uCC28\uC774\uBA70, \uC81C\uCD9C \uC815\uBCF4\uB294 \uC548\uC804\uD558\uAC8C \uBCF4\uD638\uB429\uB2C8\uB2E4.',
+        'regular-requirements': '\uC77C\uBC18 \uD68C\uC6D0\uAC00\uC785 \uD544\uC218 \uC0AC\uD56D',
+        'regular-description': '\uAE30\uC874\uC5D0 \uC0AC\uC6A9 \uC911\uC778 SNS \uACC4\uC815(\uC608: \uC18C\uC15C \uB124\uD2B8\uC6CC\uD06C) 3\uAC1C \uC774\uC0C1\uC744 \uB4F1\uB85D\uD574\uC57C \uD68C\uC6D0\uAC00\uC785\uC774 \uAC00\uB2A5\uD569\uB2C8\uB2E4.',
+        'safety-note': '\uADC0\uCC2E\uC73C\uC2DC\uB354\uB77C\uB3C4, \uC0AC\uAE30 \uBC29\uC9C0 \uBC0F \uC548\uC804\uD55C \uCEE4\uBBA4\uB2C8\uD2F0 \uC6B4\uC601\uC744 \uC704\uD55C \uD544\uC218 \uC808\uCC28\uC774\uBBC0\uB85C \uD611\uC870 \uBD80\uD0C1\uB4DC\uB9BD\uB2C8\uB2E4.',
         'btn-register': '\uB4F1\uB85D\uD558\uAE30',
         'search-title': '\uD504\uB85C\uD544 \uCC3E\uAE30',
         'btn-search': '\uAC80\uC0C9',
@@ -1976,6 +2048,15 @@ function getMainPageHTML() {
         'label-country': 'Country',
         'label-about': 'About Me',
         'label-interests': 'Interests',
+        'label-id-photo': 'ID Verification Photo Upload',
+        'id-photo-instruction': '<p class="font-semibold text-pink-600 mb-2">\u{1F4F8} Please take photo like this:</p><ul class="list-disc list-inside space-y-1"><li>Hold your ID (passport, driver's license, or national ID)</li><li>Take a selfie with your face and ID visible</li><li>Make sure photo and information on ID are clear</li><li>Take photo in a well-lit place</li></ul>',
+        'safety-policy-title': 'Safety Policy Notice to Prevent Romance Scams & Voice Phishing',
+        'safety-cooperation': 'Thank you for your cooperation for safe service use.<br>The following items must be submitted during registration.',
+        'vip-requirements': 'VIP Membership Required Documents',
+        'vip-description': 'Upload a photo holding your ID (passport, driver's license, national ID) with your face visible.<br>This is for identity verification and submitted information is securely protected.',
+        'regular-requirements': 'Regular Membership Requirements',
+        'regular-description': 'Registration requires linking 3 or more existing SNS accounts (e.g., social networks).',
+        'safety-note': 'Although inconvenient, this is a mandatory procedure to prevent fraud and ensure safe community operation. Thank you for your cooperation.',
         'btn-register': 'Register',
         'search-title': 'Find Profiles',
         'btn-search': 'Search',
@@ -1995,6 +2076,15 @@ function getMainPageHTML() {
         'label-country': '\u56FD\u5BB6',
         'label-about': '\u81EA\u6211\u4ECB\u7ECD',
         'label-interests': '\u5174\u8DA3',
+        'label-id-photo': '\u8EAB\u4EFD\u8BC1\u8BA4\u8BC1\u7167\u7247\u4E0A\u4F20',
+        'id-photo-instruction': '<p class="font-semibold text-pink-600 mb-2">\u{1F4F8} \u8BF7\u8FD9\u6837\u62CD\u7167\uFF1A</p><ul class="list-disc list-inside space-y-1"><li>\u624B\u6301\u62A4\u7167\u3001\u9A7E\u9A76\u6267\u7167\u6216\u8EAB\u4EFD\u8BC1\u4E4B\u4E00</li><li>\u62CD\u6444\u672C\u4EBA\u9762\u90E8\u548C\u8EAB\u4EFD\u8BC1\u4EF6\u4E00\u8D77\u7684\u7167\u7247</li><li>\u8EAB\u4EFD\u8BC1\u4EF6\u7684\u7167\u7247\u548C\u4FE1\u606F\u5FC5\u987B\u6E05\u6670\u53EF\u89C1</li><li>\u8BF7\u5728\u5149\u7EBF\u5145\u8DB3\u7684\u5730\u65B9\u62CD\u7167</li></ul>',
+        'safety-policy-title': '\u9632\u6B62\u6D6A\u6F2B\u8BC8\u9A97\u548C\u8BED\u97F3\u9493\u9C7C\u7684\u5B89\u5168\u653F\u7B56\u901A\u77E5',
+        'safety-cooperation': '\u4E3A\u4E86\u5B89\u5168\u4F7F\u7528\u670D\u52A1\uFF0C\u8BF7\u4E88\u4EE5\u914D\u5408\u3002<br>\u6CE8\u518C\u4F1A\u5458\u65F6\u5FC5\u987B\u63D0\u4EA4\u4EE5\u4E0B\u5185\u5BB9\u3002',
+        'vip-requirements': 'VIP\u4F1A\u5458\u6CE8\u518C\u5FC5\u987B\u63D0\u4EA4\u7684\u5185\u5BB9',
+        'vip-description': '\u5FC5\u987B\u4E0A\u4F20\u624B\u6301\u672C\u4EBA\u8EAB\u4EFD\u8BC1\u4EF6\uFF08\u62A4\u7167\u3001\u9A7E\u9A76\u6267\u7167\u3001\u8EAB\u4EFD\u8BC1\u7B49\uFF09\u4E0E\u9762\u90E8\u4E00\u8D77\u62CD\u6444\u7684\u7167\u7247\u3002<br>\u8FD9\u662F\u7528\u4E8E\u672C\u4EBA\u786E\u8BA4\u7684\u7A0B\u5E8F\uFF0C\u63D0\u4EA4\u7684\u4FE1\u606F\u5C06\u5F97\u5230\u5B89\u5168\u4FDD\u62A4\u3002',
+        'regular-requirements': '\u4E00\u822C\u4F1A\u5458\u6CE8\u518C\u5FC5\u987B\u4E8B\u9879',
+        'regular-description': '\u5FC5\u987B\u6CE8\u518C\u73B0\u6709\u4F7F\u7528\u76843\u4E2A\u4EE5\u4E0ASNS\u8D26\u6237\uFF08\u4F8B\u5982\uFF1A\u793E\u4EA4\u7F51\u7EDC\uFF09\u624D\u80FD\u6CE8\u518C\u4F1A\u5458\u3002',
+        'safety-note': '\u867D\u7136\u9EBB\u70E6\uFF0C\u4F46\u8FD9\u662F\u9632\u6B62\u8BC8\u9A97\u548C\u5B89\u5168\u8FD0\u8425\u793E\u533A\u7684\u5FC5\u9700\u7A0B\u5E8F\uFF0C\u8BF7\u4E88\u4EE5\u914D\u5408\u3002',
         'btn-register': '\u6CE8\u518C',
         'search-title': '\u67E5\u627E\u8D44\u6599',
         'btn-search': '\u641C\u7D22',
@@ -2014,6 +2104,15 @@ function getMainPageHTML() {
         'label-country': '\u56FD',
         'label-about': '\u81EA\u5DF1\u7D39\u4ECB',
         'label-interests': '\u8DA3\u5473',
+        'label-id-photo': '\u8EAB\u5206\u8A3C\u660E\u66F8\u8A8D\u8A3C\u5199\u771F\u30A2\u30C3\u30D7\u30ED\u30FC\u30C9',
+        'id-photo-instruction': '<p class="font-semibold text-pink-600 mb-2">\u{1F4F8} \u3053\u306E\u3088\u3046\u306B\u64AE\u5F71\u3057\u3066\u304F\u3060\u3055\u3044\uFF1A</p><ul class="list-disc list-inside space-y-1"><li>\u30D1\u30B9\u30DD\u30FC\u30C8\u3001\u904B\u8EE2\u514D\u8A31\u8A3C\u3001\u8EAB\u5206\u8A3C\u660E\u66F8\u306E\u3044\u305A\u308C\u304B\u3092\u624B\u306B\u6301\u3063\u3066</li><li>\u672C\u4EBA\u306E\u9854\u3068\u8EAB\u5206\u8A3C\u660E\u66F8\u304C\u4E00\u7DD2\u306B\u6620\u308B\u3088\u3046\u306B\u64AE\u5F71</li><li>\u8EAB\u5206\u8A3C\u660E\u66F8\u306E\u5199\u771F\u3068\u60C5\u5831\u304C\u9BAE\u660E\u306B\u898B\u3048\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059</li><li>\u660E\u308B\u3044\u5834\u6240\u3067\u64AE\u5F71\u3057\u3066\u304F\u3060\u3055\u3044</li></ul>',
+        'safety-policy-title': '\u30ED\u30DE\u30F3\u30B9\u8A50\u6B3A\u3068\u30DC\u30A4\u30B9\u30D5\u30A3\u30C3\u30B7\u30F3\u30B0\u9632\u6B62\u306E\u305F\u3081\u306E\u5B89\u5168\u30DD\u30EA\u30B7\u30FC\u6848\u5185',
+        'safety-cooperation': '\u5B89\u5168\u306A\u30B5\u30FC\u30D3\u30B9\u3054\u5229\u7528\u306E\u305F\u3081\u3054\u5354\u529B\u3092\u304A\u9858\u3044\u3044\u305F\u3057\u307E\u3059\u3002<br>\u4F1A\u54E1\u767B\u9332\u6642\u306F\u4EE5\u4E0B\u306E\u4E8B\u9805\u3092\u5FC5\u305A\u63D0\u51FA\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002',
+        'vip-requirements': 'VIP\u4F1A\u54E1\u767B\u9332\u6642\u306E\u5FC5\u9808\u63D0\u51FA\u4E8B\u9805',
+        'vip-description': '\u30D1\u30B9\u30DD\u30FC\u30C8\u3001\u904B\u8EE2\u514D\u8A31\u8A3C\u3001\u8EAB\u5206\u8A3C\u660E\u66F8\u306A\u3069\u306E\u672C\u4EBA\u78BA\u8A8D\u66F8\u985E\u3092\u624B\u306B\u6301\u3061\u3001\u9854\u3068\u4E00\u7DD2\u306B\u64AE\u5F71\u3057\u305F\u5199\u771F\u3092\u30A2\u30C3\u30D7\u30ED\u30FC\u30C9\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002<br>\u672C\u4EBA\u78BA\u8A8D\u306E\u305F\u3081\u306E\u624B\u7D9A\u304D\u3067\u3042\u308A\u3001\u63D0\u51FA\u3055\u308C\u305F\u60C5\u5831\u306F\u5B89\u5168\u306B\u4FDD\u8B77\u3055\u308C\u307E\u3059\u3002',
+        'regular-requirements': '\u4E00\u822C\u4F1A\u54E1\u767B\u9332\u5FC5\u9808\u4E8B\u9805',
+        'regular-description': '\u65E2\u5B58\u306B\u4F7F\u7528\u4E2D\u306ESNS\u30A2\u30AB\u30A6\u30F3\u30C8\uFF08\u4F8B\uFF1A\u30BD\u30FC\u30B7\u30E3\u30EB\u30CD\u30C3\u30C8\u30EF\u30FC\u30AF\uFF09\u30923\u500B\u4EE5\u4E0A\u767B\u9332\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u3002',
+        'safety-note': '\u304A\u624B\u6570\u3067\u3059\u304C\u3001\u8A50\u6B3A\u9632\u6B62\u3068\u5B89\u5168\u306A\u30B3\u30DF\u30E5\u30CB\u30C6\u30A3\u904B\u55B6\u306E\u305F\u3081\u306E\u5FC5\u9808\u624B\u7D9A\u304D\u3067\u3059\u306E\u3067\u3001\u3054\u5354\u529B\u3092\u304A\u9858\u3044\u3044\u305F\u3057\u307E\u3059\u3002',
         'btn-register': '\u767B\u9332',
         'search-title': '\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB\u691C\u7D22',
         'btn-search': '\u691C\u7D22',
@@ -2033,6 +2132,15 @@ function getMainPageHTML() {
         'label-country': 'Qu\u1ED1c gia',
         'label-about': 'Gi\u1EDBi thi\u1EC7u b\u1EA3n th\xE2n',
         'label-interests': 'S\u1EDF th\xEDch',
+        'label-id-photo': 'T\u1EA3i l\xEAn \u1EA3nh x\xE1c minh gi\u1EA5y t\u1EDD',
+        'id-photo-instruction': '<p class="font-semibold text-pink-600 mb-2">\u{1F4F8} Vui l\xF2ng ch\u1EE5p \u1EA3nh nh\u01B0 th\u1EBF n\xE0y:</p><ul class="list-disc list-inside space-y-1"><li>C\u1EA7m h\u1ED9 chi\u1EBFu, gi\u1EA5y ph\xE9p l\xE1i xe ho\u1EB7c ch\u1EE9ng minh th\u01B0 nh\xE2n d\xE2n tr\xEAn tay</li><li>Ch\u1EE5p \u1EA3nh sao cho khu\xF4n m\u1EB7t v\xE0 gi\u1EA5y t\u1EDD c\xF9ng hi\u1EC7n r\xF5</li><li>\u1EA2nh v\xE0 th\xF4ng tin tr\xEAn gi\u1EA5y t\u1EDD ph\u1EA3i r\xF5 r\xE0ng</li><li>Ch\u1EE5p \u1EA3nh \u1EDF n\u01A1i c\xF3 \xE1nh s\xE1ng t\u1ED1t</li></ul>',
+        'safety-policy-title': 'Th\xF4ng b\xE1o ch\xEDnh s\xE1ch an to\xE0n \u0111\u1EC3 ng\u0103n ch\u1EB7n l\u1EEBa \u0111\u1EA3o l\xE3ng m\u1EA1n v\xE0 l\u1EEBa \u0111\u1EA3o gi\u1ECDng n\xF3i',
+        'safety-cooperation': 'C\u1EA3m \u01A1n s\u1EF1 h\u1EE3p t\xE1c c\u1EE7a b\u1EA1n \u0111\u1EC3 s\u1EED d\u1EE5ng d\u1ECBch v\u1EE5 an to\xE0n.<br>C\xE1c m\u1EE5c sau ph\u1EA3i \u0111\u01B0\u1EE3c n\u1ED9p khi \u0111\u0103ng k\xFD.',
+        'vip-requirements': 'T\xE0i li\u1EC7u b\u1EAFt bu\u1ED9c cho th\xE0nh vi\xEAn VIP',
+        'vip-description': 'T\u1EA3i l\xEAn \u1EA3nh c\u1EA7m gi\u1EA5y t\u1EDD c\u1EE7a b\u1EA1n (h\u1ED9 chi\u1EBFu, gi\u1EA5y ph\xE9p l\xE1i xe, ch\u1EE9ng minh th\u01B0) v\u1EDBi khu\xF4n m\u1EB7t c\u1EE7a b\u1EA1n hi\u1EC7n r\xF5.<br>\u0110\xE2y l\xE0 \u0111\u1EC3 x\xE1c minh danh t\xEDnh v\xE0 th\xF4ng tin n\u1ED9p s\u1EBD \u0111\u01B0\u1EE3c b\u1EA3o v\u1EC7 an to\xE0n.',
+        'regular-requirements': 'Y\xEAu c\u1EA7u th\xE0nh vi\xEAn th\xF4ng th\u01B0\u1EDDng',
+        'regular-description': '\u0110\u0103ng k\xFD y\xEAu c\u1EA7u li\xEAn k\u1EBFt 3 ho\u1EB7c nhi\u1EC1u t\xE0i kho\u1EA3n SNS hi\u1EC7n c\xF3 (v\xED d\u1EE5: m\u1EA1ng x\xE3 h\u1ED9i).',
+        'safety-note': 'M\u1EB7c d\xF9 b\u1EA5t ti\u1EC7n, \u0111\xE2y l\xE0 th\u1EE7 t\u1EE5c b\u1EAFt bu\u1ED9c \u0111\u1EC3 ng\u0103n ch\u1EB7n gian l\u1EADn v\xE0 \u0111\u1EA3m b\u1EA3o ho\u1EA1t \u0111\u1ED9ng c\u1ED9ng \u0111\u1ED3ng an to\xE0n. C\u1EA3m \u01A1n s\u1EF1 h\u1EE3p t\xE1c c\u1EE7a b\u1EA1n.',
         'btn-register': '\u0110\u0103ng k\xFD',
         'search-title': 'T\xECm h\u1ED3 s\u01A1',
         'btn-search': 'T\xECm ki\u1EBFm',
@@ -2052,6 +2160,15 @@ function getMainPageHTML() {
         'label-country': '\u0627\u0644\u062F\u0648\u0644\u0629',
         'label-about': '\u0639\u0646 \u0646\u0641\u0633\u064A',
         'label-interests': '\u0627\u0644\u0627\u0647\u062A\u0645\u0627\u0645\u0627\u062A',
+        'label-id-photo': '\u062A\u062D\u0645\u064A\u0644 \u0635\u0648\u0631\u0629 \u0627\u0644\u062A\u062D\u0642\u0642 \u0645\u0646 \u0627\u0644\u0647\u0648\u064A\u0629',
+        'id-photo-instruction': '<p class="font-semibold text-pink-600 mb-2">\u{1F4F8} \u064A\u0631\u062C\u0649 \u0627\u0644\u062A\u0642\u0627\u0637 \u0627\u0644\u0635\u0648\u0631\u0629 \u0647\u0643\u0630\u0627:</p><ul class="list-disc list-inside space-y-1"><li>\u0627\u062D\u0645\u0644 \u062C\u0648\u0627\u0632 \u0633\u0641\u0631\u0643 \u0623\u0648 \u0631\u062E\u0635\u0629 \u0627\u0644\u0642\u064A\u0627\u062F\u0629 \u0623\u0648 \u0628\u0637\u0627\u0642\u0629 \u0627\u0644\u0647\u0648\u064A\u0629</li><li>\u0627\u0644\u062A\u0642\u0637 \u0635\u0648\u0631\u0629 \u0634\u062E\u0635\u064A\u0629 \u0645\u0639 \u0648\u062C\u0647\u0643 \u0648\u0628\u0637\u0627\u0642\u0629 \u0627\u0644\u0647\u0648\u064A\u0629 \u0645\u0631\u0626\u064A\u0629</li><li>\u062A\u0623\u0643\u062F \u0645\u0646 \u0623\u0646 \u0627\u0644\u0635\u0648\u0631\u0629 \u0648\u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062A \u0639\u0644\u0649 \u0628\u0637\u0627\u0642\u0629 \u0627\u0644\u0647\u0648\u064A\u0629 \u0648\u0627\u0636\u062D\u0629</li><li>\u0627\u0644\u062A\u0642\u0637 \u0627\u0644\u0635\u0648\u0631\u0629 \u0641\u064A \u0645\u0643\u0627\u0646 \u062C\u064A\u062F \u0627\u0644\u0625\u0636\u0627\u0621\u0629</li></ul>',
+        'safety-policy-title': '\u0625\u0634\u0639\u0627\u0631 \u0633\u064A\u0627\u0633\u0629 \u0627\u0644\u0633\u0644\u0627\u0645\u0629 \u0644\u0645\u0646\u0639 \u0639\u0645\u0644\u064A\u0627\u062A \u0627\u0644\u0627\u062D\u062A\u064A\u0627\u0644 \u0627\u0644\u0631\u0648\u0645\u0627\u0646\u0633\u064A\u0629 \u0648\u0627\u0644\u0627\u062D\u062A\u064A\u0627\u0644 \u0627\u0644\u0635\u0648\u062A\u064A',
+        'safety-cooperation': '\u0634\u0643\u0631\u0627\u064B \u0644\u062A\u0639\u0627\u0648\u0646\u0643\u0645 \u0644\u0627\u0633\u062A\u062E\u062F\u0627\u0645 \u0627\u0644\u062E\u062F\u0645\u0629 \u0628\u0634\u0643\u0644 \u0622\u0645\u0646.<br>\u064A\u062C\u0628 \u062A\u0642\u062F\u064A\u0645 \u0627\u0644\u0639\u0646\u0627\u0635\u0631 \u0627\u0644\u062A\u0627\u0644\u064A\u0629 \u0623\u062B\u0646\u0627\u0621 \u0627\u0644\u062A\u0633\u062C\u064A\u0644.',
+        'vip-requirements': '\u0627\u0644\u0645\u0633\u062A\u0646\u062F\u0627\u062A \u0627\u0644\u0645\u0637\u0644\u0648\u0628\u0629 \u0644\u0639\u0636\u0648\u064A\u0629 VIP',
+        'vip-description': '\u0642\u0645 \u0628\u062A\u062D\u0645\u064A\u0644 \u0635\u0648\u0631\u0629 \u0648\u0623\u0646\u062A \u062A\u062D\u0645\u0644 \u0628\u0637\u0627\u0642\u0629 \u0647\u0648\u064A\u062A\u0643 (\u062C\u0648\u0627\u0632 \u0633\u0641\u0631\u060C \u0631\u062E\u0635\u0629 \u0642\u064A\u0627\u062F\u0629\u060C \u0628\u0637\u0627\u0642\u0629 \u0647\u0648\u064A\u0629 \u0648\u0637\u0646\u064A\u0629) \u0645\u0639 \u0648\u062C\u0647\u0643 \u0645\u0631\u0626\u064A.<br>\u0647\u0630\u0627 \u0644\u0644\u062A\u062D\u0642\u0642 \u0645\u0646 \u0627\u0644\u0647\u0648\u064A\u0629 \u0648\u0627\u0644\u0645\u0639\u0644\u0648\u0645\u0627\u062A \u0627\u0644\u0645\u0642\u062F\u0645\u0629 \u0645\u062D\u0645\u064A\u0629 \u0628\u0634\u0643\u0644 \u0622\u0645\u0646.',
+        'regular-requirements': '\u0645\u062A\u0637\u0644\u0628\u0627\u062A \u0627\u0644\u0639\u0636\u0648\u064A\u0629 \u0627\u0644\u0639\u0627\u062F\u064A\u0629',
+        'regular-description': '\u064A\u062A\u0637\u0644\u0628 \u0627\u0644\u062A\u0633\u062C\u064A\u0644 \u0631\u0628\u0637 3 \u062D\u0633\u0627\u0628\u0627\u062A SNS \u0645\u0648\u062C\u0648\u062F\u0629 \u0623\u0648 \u0623\u0643\u062B\u0631 (\u0645\u062B\u0644 \u0634\u0628\u0643\u0627\u062A \u0627\u0644\u062A\u0648\u0627\u0635\u0644 \u0627\u0644\u0627\u062C\u062A\u0645\u0627\u0639\u064A).',
+        'safety-note': '\u0639\u0644\u0649 \u0627\u0644\u0631\u063A\u0645 \u0645\u0646 \u0639\u062F\u0645 \u0627\u0644\u0631\u0627\u062D\u0629\u060C \u0647\u0630\u0627 \u0625\u062C\u0631\u0627\u0621 \u0625\u0644\u0632\u0627\u0645\u064A \u0644\u0645\u0646\u0639 \u0627\u0644\u0627\u062D\u062A\u064A\u0627\u0644 \u0648\u0636\u0645\u0627\u0646 \u062A\u0634\u063A\u064A\u0644 \u0645\u062C\u062A\u0645\u0639 \u0622\u0645\u0646. \u0634\u0643\u0631\u0627\u064B \u0644\u062A\u0639\u0627\u0648\u0646\u0643\u0645.',
         'btn-register': '\u062A\u0633\u062C\u064A\u0644',
         'search-title': '\u0627\u0644\u0628\u062D\u062B \u0639\u0646 \u0645\u0644\u0641\u0627\u062A',
         'btn-search': '\u0628\u062D\u062B',
@@ -2110,6 +2227,19 @@ function getMainPageHTML() {
         searchProfiles();
       }
     }
+
+    // \uC0AC\uC9C4 \uC5C5\uB85C\uB4DC \uBBF8\uB9AC\uBCF4\uAE30
+    document.getElementById('idPhoto').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById('previewImage').src = e.target.result;
+          document.getElementById('photoPreview').classList.remove('hidden');
+        };
+        reader.readAsDataURL(file);
+      }
+    });
 
     // \uD504\uB85C\uD544 \uB4F1\uB85D
     document.getElementById('registerForm').addEventListener('submit', async (e) => {

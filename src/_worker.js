@@ -388,6 +388,69 @@ function getMainPageHTML() {
           <input type="text" id="interests" placeholder="예: 요리, 여행, 독서" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
         </div>
 
+        <!-- 신분증 사진 업로드 -->
+        <div class="border-2 border-dashed border-pink-300 rounded-lg p-6 bg-pink-50">
+          <label class="block text-gray-700 font-bold mb-3" id="label-id-photo">
+            <i class="fas fa-id-card text-pink-600"></i> 신분증 인증 사진 업로드
+          </label>
+          
+          <!-- 예시 사진 표시 -->
+          <div class="mb-4 flex flex-col md:flex-row gap-4 items-center">
+            <div class="w-full md:w-1/3">
+              <img src="https://www.genspark.ai/api/files/s/gQ21EItf" alt="신분증 예시" class="w-full rounded-lg shadow-md">
+            </div>
+            <div class="w-full md:w-2/3 text-sm text-gray-700" id="id-photo-instruction">
+              <p class="font-semibold text-pink-600 mb-2">📸 이렇게 촬영해주세요:</p>
+              <ul class="list-disc list-inside space-y-1">
+                <li>여권, 운전면허증, 주민등록증 중 하나를 손에 들고</li>
+                <li>본인 얼굴과 신분증이 함께 나오도록 촬영</li>
+                <li>신분증의 사진과 정보가 선명하게 보여야 합니다</li>
+                <li>조명이 밝은 곳에서 촬영해주세요</li>
+              </ul>
+            </div>
+          </div>
+
+          <input type="file" id="idPhoto" accept="image/*" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 bg-white">
+          <div id="photoPreview" class="mt-3 hidden">
+            <img id="previewImage" class="w-full max-w-md mx-auto rounded-lg shadow-md">
+          </div>
+        </div>
+
+        <!-- 안전정책 안내 -->
+        <div class="bg-gradient-to-r from-red-50 to-orange-50 border-l-4 border-red-500 p-6 rounded-lg shadow-md">
+          <h3 class="font-bold text-lg text-red-700 mb-3 flex items-center" id="safety-policy-title">
+            <i class="fas fa-shield-alt mr-2"></i> 로맨스스캠 및 보이스피싱 예방을 위한 안전정책 안내
+          </h3>
+          <p class="text-sm text-gray-700 mb-3" id="safety-cooperation">
+            안전한 서비스 이용을 위해 협조 부탁드립니다.<br>
+            회원가입 시 아래 사항을 반드시 제출해야 가입이 가능합니다.
+          </p>
+          
+          <div class="bg-white p-4 rounded-lg mb-3 border-l-4 border-yellow-500">
+            <h4 class="font-bold text-yellow-700 mb-2" id="vip-requirements">
+              <i class="fas fa-crown mr-1"></i> VIP 회원가입 시 필수 제출 사항
+            </h4>
+            <p class="text-sm text-gray-700" id="vip-description">
+              여권, 운전면허증, 주민등록증 등 본인 신분증을 손에 들고 얼굴과 함께 촬영한 사진을 업로드해야 합니다.<br>
+              본인 확인을 위한 절차이며, 제출 정보는 안전하게 보호됩니다.
+            </p>
+          </div>
+
+          <div class="bg-white p-4 rounded-lg border-l-4 border-blue-500">
+            <h4 class="font-bold text-blue-700 mb-2" id="regular-requirements">
+              <i class="fas fa-users mr-1"></i> 일반 회원가입 필수 사항
+            </h4>
+            <p class="text-sm text-gray-700" id="regular-description">
+              기존에 사용 중인 SNS 계정(예: 소셜 네트워크) 3개 이상을 등록해야 회원가입이 가능합니다.
+            </p>
+          </div>
+
+          <p class="text-xs text-gray-600 mt-3 italic" id="safety-note">
+            <i class="fas fa-exclamation-circle text-red-500"></i> 
+            귀찮으시더라도, 사기 방지 및 안전한 커뮤니티 운영을 위한 필수 절차이므로 협조 부탁드립니다.
+          </p>
+        </div>
+
         <button type="submit" class="w-full bg-pink-600 text-white font-bold py-3 rounded-lg hover:bg-pink-700 transition" id="btn-register">
           <i class="fas fa-paper-plane"></i> 등록하기
         </button>
@@ -454,6 +517,15 @@ function getMainPageHTML() {
         'label-country': '국가',
         'label-about': '자기소개',
         'label-interests': '관심사',
+        'label-id-photo': '신분증 인증 사진 업로드',
+        'id-photo-instruction': '<p class="font-semibold text-pink-600 mb-2">📸 이렇게 촬영해주세요:</p><ul class="list-disc list-inside space-y-1"><li>여권, 운전면허증, 주민등록증 중 하나를 손에 들고</li><li>본인 얼굴과 신분증이 함께 나오도록 촬영</li><li>신분증의 사진과 정보가 선명하게 보여야 합니다</li><li>조명이 밝은 곳에서 촬영해주세요</li></ul>',
+        'safety-policy-title': '로맨스스캠 및 보이스피싱 예방을 위한 안전정책 안내',
+        'safety-cooperation': '안전한 서비스 이용을 위해 협조 부탁드립니다.<br>회원가입 시 아래 사항을 반드시 제출해야 가입이 가능합니다.',
+        'vip-requirements': 'VIP 회원가입 시 필수 제출 사항',
+        'vip-description': '여권, 운전면허증, 주민등록증 등 본인 신분증을 손에 들고 얼굴과 함께 촬영한 사진을 업로드해야 합니다.<br>본인 확인을 위한 절차이며, 제출 정보는 안전하게 보호됩니다.',
+        'regular-requirements': '일반 회원가입 필수 사항',
+        'regular-description': '기존에 사용 중인 SNS 계정(예: 소셜 네트워크) 3개 이상을 등록해야 회원가입이 가능합니다.',
+        'safety-note': '귀찮으시더라도, 사기 방지 및 안전한 커뮤니티 운영을 위한 필수 절차이므로 협조 부탁드립니다.',
         'btn-register': '등록하기',
         'search-title': '프로필 찾기',
         'btn-search': '검색',
@@ -473,6 +545,15 @@ function getMainPageHTML() {
         'label-country': 'Country',
         'label-about': 'About Me',
         'label-interests': 'Interests',
+        'label-id-photo': 'ID Verification Photo Upload',
+        'id-photo-instruction': '<p class="font-semibold text-pink-600 mb-2">📸 Please take photo like this:</p><ul class="list-disc list-inside space-y-1"><li>Hold your ID (passport, driver\'s license, or national ID)</li><li>Take a selfie with your face and ID visible</li><li>Make sure photo and information on ID are clear</li><li>Take photo in a well-lit place</li></ul>',
+        'safety-policy-title': 'Safety Policy Notice to Prevent Romance Scams & Voice Phishing',
+        'safety-cooperation': 'Thank you for your cooperation for safe service use.<br>The following items must be submitted during registration.',
+        'vip-requirements': 'VIP Membership Required Documents',
+        'vip-description': 'Upload a photo holding your ID (passport, driver\'s license, national ID) with your face visible.<br>This is for identity verification and submitted information is securely protected.',
+        'regular-requirements': 'Regular Membership Requirements',
+        'regular-description': 'Registration requires linking 3 or more existing SNS accounts (e.g., social networks).',
+        'safety-note': 'Although inconvenient, this is a mandatory procedure to prevent fraud and ensure safe community operation. Thank you for your cooperation.',
         'btn-register': 'Register',
         'search-title': 'Find Profiles',
         'btn-search': 'Search',
@@ -492,6 +573,15 @@ function getMainPageHTML() {
         'label-country': '国家',
         'label-about': '自我介绍',
         'label-interests': '兴趣',
+        'label-id-photo': '身份证认证照片上传',
+        'id-photo-instruction': '<p class="font-semibold text-pink-600 mb-2">📸 请这样拍照：</p><ul class="list-disc list-inside space-y-1"><li>手持护照、驾驶执照或身份证之一</li><li>拍摄本人面部和身份证件一起的照片</li><li>身份证件的照片和信息必须清晰可见</li><li>请在光线充足的地方拍照</li></ul>',
+        'safety-policy-title': '防止浪漫诈骗和语音钓鱼的安全政策通知',
+        'safety-cooperation': '为了安全使用服务，请予以配合。<br>注册会员时必须提交以下内容。',
+        'vip-requirements': 'VIP会员注册必须提交的内容',
+        'vip-description': '必须上传手持本人身份证件（护照、驾驶执照、身份证等）与面部一起拍摄的照片。<br>这是用于本人确认的程序，提交的信息将得到安全保护。',
+        'regular-requirements': '一般会员注册必须事项',
+        'regular-description': '必须注册现有使用的3个以上SNS账户（例如：社交网络）才能注册会员。',
+        'safety-note': '虽然麻烦，但这是防止诈骗和安全运营社区的必需程序，请予以配合。',
         'btn-register': '注册',
         'search-title': '查找资料',
         'btn-search': '搜索',
@@ -511,6 +601,15 @@ function getMainPageHTML() {
         'label-country': '国',
         'label-about': '自己紹介',
         'label-interests': '趣味',
+        'label-id-photo': '身分証明書認証写真アップロード',
+        'id-photo-instruction': '<p class="font-semibold text-pink-600 mb-2">📸 このように撮影してください：</p><ul class="list-disc list-inside space-y-1"><li>パスポート、運転免許証、身分証明書のいずれかを手に持って</li><li>本人の顔と身分証明書が一緒に映るように撮影</li><li>身分証明書の写真と情報が鮮明に見える必要があります</li><li>明るい場所で撮影してください</li></ul>',
+        'safety-policy-title': 'ロマンス詐欺とボイスフィッシング防止のための安全ポリシー案内',
+        'safety-cooperation': '安全なサービスご利用のためご協力をお願いいたします。<br>会員登録時は以下の事項を必ず提出する必要があります。',
+        'vip-requirements': 'VIP会員登録時の必須提出事項',
+        'vip-description': 'パスポート、運転免許証、身分証明書などの本人確認書類を手に持ち、顔と一緒に撮影した写真をアップロードする必要があります。<br>本人確認のための手続きであり、提出された情報は安全に保護されます。',
+        'regular-requirements': '一般会員登録必須事項',
+        'regular-description': '既存に使用中のSNSアカウント（例：ソーシャルネットワーク）を3個以上登録する必要があります。',
+        'safety-note': 'お手数ですが、詐欺防止と安全なコミュニティ運営のための必須手続きですので、ご協力をお願いいたします。',
         'btn-register': '登録',
         'search-title': 'プロフィール検索',
         'btn-search': '検索',
@@ -530,6 +629,15 @@ function getMainPageHTML() {
         'label-country': 'Quốc gia',
         'label-about': 'Giới thiệu bản thân',
         'label-interests': 'Sở thích',
+        'label-id-photo': 'Tải lên ảnh xác minh giấy tờ',
+        'id-photo-instruction': '<p class="font-semibold text-pink-600 mb-2">📸 Vui lòng chụp ảnh như thế này:</p><ul class="list-disc list-inside space-y-1"><li>Cầm hộ chiếu, giấy phép lái xe hoặc chứng minh thư nhân dân trên tay</li><li>Chụp ảnh sao cho khuôn mặt và giấy tờ cùng hiện rõ</li><li>Ảnh và thông tin trên giấy tờ phải rõ ràng</li><li>Chụp ảnh ở nơi có ánh sáng tốt</li></ul>',
+        'safety-policy-title': 'Thông báo chính sách an toàn để ngăn chặn lừa đảo lãng mạn và lừa đảo giọng nói',
+        'safety-cooperation': 'Cảm ơn sự hợp tác của bạn để sử dụng dịch vụ an toàn.<br>Các mục sau phải được nộp khi đăng ký.',
+        'vip-requirements': 'Tài liệu bắt buộc cho thành viên VIP',
+        'vip-description': 'Tải lên ảnh cầm giấy tờ của bạn (hộ chiếu, giấy phép lái xe, chứng minh thư) với khuôn mặt của bạn hiện rõ.<br>Đây là để xác minh danh tính và thông tin nộp sẽ được bảo vệ an toàn.',
+        'regular-requirements': 'Yêu cầu thành viên thông thường',
+        'regular-description': 'Đăng ký yêu cầu liên kết 3 hoặc nhiều tài khoản SNS hiện có (ví dụ: mạng xã hội).',
+        'safety-note': 'Mặc dù bất tiện, đây là thủ tục bắt buộc để ngăn chặn gian lận và đảm bảo hoạt động cộng đồng an toàn. Cảm ơn sự hợp tác của bạn.',
         'btn-register': 'Đăng ký',
         'search-title': 'Tìm hồ sơ',
         'btn-search': 'Tìm kiếm',
@@ -549,6 +657,15 @@ function getMainPageHTML() {
         'label-country': 'الدولة',
         'label-about': 'عن نفسي',
         'label-interests': 'الاهتمامات',
+        'label-id-photo': 'تحميل صورة التحقق من الهوية',
+        'id-photo-instruction': '<p class="font-semibold text-pink-600 mb-2">📸 يرجى التقاط الصورة هكذا:</p><ul class="list-disc list-inside space-y-1"><li>احمل جواز سفرك أو رخصة القيادة أو بطاقة الهوية</li><li>التقط صورة شخصية مع وجهك وبطاقة الهوية مرئية</li><li>تأكد من أن الصورة والمعلومات على بطاقة الهوية واضحة</li><li>التقط الصورة في مكان جيد الإضاءة</li></ul>',
+        'safety-policy-title': 'إشعار سياسة السلامة لمنع عمليات الاحتيال الرومانسية والاحتيال الصوتي',
+        'safety-cooperation': 'شكراً لتعاونكم لاستخدام الخدمة بشكل آمن.<br>يجب تقديم العناصر التالية أثناء التسجيل.',
+        'vip-requirements': 'المستندات المطلوبة لعضوية VIP',
+        'vip-description': 'قم بتحميل صورة وأنت تحمل بطاقة هويتك (جواز سفر، رخصة قيادة، بطاقة هوية وطنية) مع وجهك مرئي.<br>هذا للتحقق من الهوية والمعلومات المقدمة محمية بشكل آمن.',
+        'regular-requirements': 'متطلبات العضوية العادية',
+        'regular-description': 'يتطلب التسجيل ربط 3 حسابات SNS موجودة أو أكثر (مثل شبكات التواصل الاجتماعي).',
+        'safety-note': 'على الرغم من عدم الراحة، هذا إجراء إلزامي لمنع الاحتيال وضمان تشغيل مجتمع آمن. شكراً لتعاونكم.',
         'btn-register': 'تسجيل',
         'search-title': 'البحث عن ملفات',
         'btn-search': 'بحث',
@@ -607,6 +724,19 @@ function getMainPageHTML() {
         searchProfiles();
       }
     }
+
+    // 사진 업로드 미리보기
+    document.getElementById('idPhoto').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById('previewImage').src = e.target.result;
+          document.getElementById('photoPreview').classList.remove('hidden');
+        };
+        reader.readAsDataURL(file);
+      }
+    });
 
     // 프로필 등록
     document.getElementById('registerForm').addEventListener('submit', async (e) => {
