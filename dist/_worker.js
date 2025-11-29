@@ -1899,8 +1899,12 @@ function getMainPageHTML() {
           
           <!-- \uC608\uC2DC \uC0AC\uC9C4 \uD45C\uC2DC -->
           <div class="mb-3 flex flex-col md:flex-row gap-3 items-center">
-            <div class="w-full md:w-1/3">
-              <img src="https://www.genspark.ai/api/files/s/asjlOo8g" alt="\uC2E0\uBD84\uC99D \uC608\uC2DC" class="w-full rounded-lg shadow-md">
+            <div class="w-full md:w-1/3 bg-gradient-to-br from-pink-100 to-purple-100 rounded-lg p-4 flex flex-col items-center justify-center" style="min-height: 200px;">
+              <svg class="w-20 h-20 text-pink-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path>
+              </svg>
+              <p class="text-xs text-gray-600 text-center font-semibold">\u{1F4F8} \uC2E0\uBD84\uC99D \uC608\uC2DC</p>
+              <p class="text-xs text-gray-500 text-center mt-1">\uC5BC\uAD74\uACFC \uC2E0\uBD84\uC99D\uC744<br>\uD568\uAED8 \uCD2C\uC601</p>
             </div>
             <div class="w-full md:w-2/3 text-xs text-gray-700" id="id-photo-instruction">
               <p class="font-semibold text-pink-600 mb-1">\u{1F4F8} \uC774\uB807\uAC8C \uCD2C\uC601\uD574\uC8FC\uC138\uC694:</p>
