@@ -501,6 +501,9 @@ function getMainPageHTML() {
   </div>
 
   <script>
+    // 전역 변수
+    let currentChatbotLang = 'ko';
+    
     // 다국어 지원
     const translations = {
       ko: {
@@ -548,11 +551,11 @@ function getMainPageHTML() {
         'label-about': 'About Me',
         'label-interests': 'Interests',
         'label-id-photo': 'ID Verification Photo Upload',
-        'id-photo-instruction': '<p class="font-semibold text-pink-600 mb-2">📸 Please take photo like this:</p><ul class="list-disc list-inside space-y-1"><li>Hold your ID (passport, driver\'s license, or national ID)</li><li>Take a selfie with your face and ID visible</li><li>Make sure photo and information on ID are clear</li><li>Take photo in a well-lit place</li></ul>',
+        'id-photo-instruction': '<p class="font-semibold text-pink-600 mb-2">📸 Please take photo like this:</p><ul class="list-disc list-inside space-y-1"><li>Hold your ID (passport, driver&apos;s license, or national ID)</li><li>Take a selfie with your face and ID visible</li><li>Make sure photo and information on ID are clear</li><li>Take photo in a well-lit place</li></ul>',
         'safety-policy-title': 'Safety Policy Notice to Prevent Romance Scams & Voice Phishing',
         'safety-cooperation': 'Thank you for your cooperation for safe service use.<br>The following items must be submitted during registration.',
         'vip-requirements': 'VIP Membership Required Documents',
-        'vip-description': 'Upload a photo holding your ID (passport, driver\'s license, national ID) with your face visible.<br>This is for identity verification and submitted information is securely protected.',
+        'vip-description': 'Upload a photo holding your ID (passport, driver&apos;s license, national ID) with your face visible.<br>This is for identity verification and submitted information is securely protected.',
         'regular-requirements': 'Regular Membership Requirements',
         'regular-description': 'Registration requires linking 3 or more existing SNS accounts (e.g., social networks).',
         'safety-note': 'Although inconvenient, this is a mandatory procedure to prevent fraud and ensure safe community operation. Thank you for your cooperation.',
@@ -679,8 +682,8 @@ function getMainPageHTML() {
       }
     };
 
-    document.getElementById('language-selector').addEventListener('change', function() {
-      const lang = this.value;
+    // 언어 적용 함수
+    function applyLanguage(lang) {
       const trans = translations[lang];
       
       if (lang === 'ar') {
@@ -735,6 +738,21 @@ function getMainPageHTML() {
           }
         }
       }
+      
+      // 챗봇 언어도 함께 변경
+      currentChatbotLang = lang;
+      loadChatbotFAQs();
+    }
+
+    // 언어 선택기 이벤트
+    document.getElementById('language-selector').addEventListener('change', function() {
+      applyLanguage(this.value);
+    });
+
+    // 페이지 로드 시 초기 언어 적용
+    document.addEventListener('DOMContentLoaded', function() {
+      const initialLang = document.getElementById('language-selector').value || 'ko';
+      applyLanguage(initialLang);
     });
 
     // 탭 전환
@@ -746,9 +764,15 @@ function getMainPageHTML() {
       });
       
       document.getElementById(tab + '-tab').classList.remove('hidden');
-      const btn = document.querySelector(\`button[onclick="showTab('\${tab}')"]\`);
-      btn.classList.add('active', 'bg-white', 'text-pink-600');
-      btn.classList.remove('bg-pink-100', 'text-gray-700');
+      
+      // 모든 탭 버튼을 순회하며 해당 탭 찾기
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        const onclickAttr = b.getAttribute('onclick');
+        if (onclickAttr && onclickAttr.includes(tab)) {
+          b.classList.add('active', 'bg-white', 'text-pink-600');
+          b.classList.remove('bg-pink-100', 'text-gray-700');
+        }
+      });
       
       if (tab === 'stats') {
         loadStats();
@@ -1129,7 +1153,7 @@ function getMainPageHTML() {
         "questions": [
           {"q": "What is CoupleGate?", "a": "CoupleGate is a global matching platform connecting people worldwide for serious international dating and marriage. It provides AI-based matching, real-time translation, video calls, and all features necessary for long-distance international relationships."},
           {"q": "Who are the main users?", "a": "Singles and divorcees in their 40s, 50s, and 60s seeking global dating and marriage. A strict verification system is applied for reliable conversations and matching."},
-          {"q": "What's the difference between free and premium?", "a": "Free members: Limited menu and search features\\nPremium members: Full access (matching, messaging, video calls, translation, advanced filters, profile analysis)\\n3+ social media verifications required"},
+          {"q": "What is the difference between free and premium?", "a": "Free members: Limited menu and search features\\nPremium members: Full access (matching, messaging, video calls, translation, advanced filters, profile analysis)\\n3+ social media verifications required"},
           {"q": "How do I sign up?", "a": "Click 'Sign Up Free' → Enter email → Verify 3+ SNS accounts (Facebook/Instagram/Kakao/X/Naver/Google/WeChat) → Add profile photo and bio → Complete free membership"},
           {"q": "Why do I need 3+ SNS verifications?", "a": "Trust is the most important element in international matching platforms. Multi-SNS verification blocks fraudulent accounts and provides stable matching."},
           {"q": "Which accounts can I verify?", "a": "Facebook, Instagram, Kakao, X(Twitter), Naver, Google, WeChat — You need to verify at least 3 out of 7 accounts to complete sign-up."},
@@ -1137,7 +1161,7 @@ function getMainPageHTML() {
           {"q": "Is there automatic profile verification?", "a": "Yes. AI automatically analyzes Deepfake, composite, and duplicate photos to filter out risky accounts."},
           {"q": "What is automatic profile creation?", "a": "Analyzes uploaded photos and interests to:\\nAuto-generate bio\\nRecommend best photo combinations\\nRewrite attractive sentences\\nand more."},
           {"q": "Is there cultural difference coaching?", "a": "Yes. Provides automatic guidance on dating manners, precautions, and taboos by country to maintain relationships without misunderstandings. Example: Korean men ↔ Vietnamese women conversation tips"},
-          {"q": "How does AI translation work?", "a": "Messages are automatically translated to the recipient's language, displaying both original and translated text together."},
+          {"q": "How does AI translation work?", "a": "Messages are automatically translated to the recipient language, displaying both original and translated text together."},
           {"q": "Can you analyze why responses are slow?", "a": "Yes. Based on message patterns and emotion analysis, AI estimates reasons like 'busy delay', 'low interest', 'being careful', etc."},
           {"q": "Are voice messages translated too?", "a": "Yes. Voice is converted to text → translated → emotion analyzed automatically."},
           {"q": "How many photos can I upload?", "a": "Up to 10 photos."},
@@ -1258,8 +1282,6 @@ function getMainPageHTML() {
       }
     };
 
-    let currentChatbotLang = 'ko';
-
     function toggleChatbot() {
       const chatbot = document.getElementById('chatbotWindow');
       chatbot.classList.toggle('active');
@@ -1310,16 +1332,7 @@ function getMainPageHTML() {
       });
     }
 
-    // 언어 선택기와 챗봇 언어 동기화
-    const langSelector = document.getElementById('language-selector');
-    if (langSelector) {
-      langSelector.addEventListener('change', function() {
-        currentChatbotLang = this.value;
-        if (document.getElementById('chatbotWindow').classList.contains('active')) {
-          loadChatbotFAQs();
-        }
-      });
-    }
+
 
     // DOM 준비 후 초기 챗봇 FAQ 데이터 로드
     if (document.readyState === 'loading') {
