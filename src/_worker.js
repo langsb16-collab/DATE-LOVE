@@ -336,35 +336,35 @@ function getMainPageHTML() {
     </div>
 
     <!-- 프로필 등록 탭 -->
-    <div id="register-tab" class="tab-content max-w-4xl mx-auto bg-white rounded-lg shadow-2xl p-4 md:p-8">
-      <h2 class="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6" id="register-title">
+    <div id="register-tab" class="tab-content max-w-4xl mx-auto bg-white rounded-lg shadow-2xl p-3 md:p-6">
+      <h2 class="text-lg md:text-xl font-bold text-gray-800 mb-3 md:mb-4" id="register-title">
         <i class="fas fa-user-plus text-pink-500"></i> 프로필 등록
       </h2>
       
-      <form id="registerForm" class="space-y-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <form id="registerForm" class="space-y-3">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div>
-            <label class="block text-gray-700 font-semibold mb-2" id="label-name">이름</label>
-            <input type="text" id="name" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+            <label class="block text-sm text-gray-700 font-semibold mb-1" id="label-name">이름</label>
+            <input type="text" id="name" required class="w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
           </div>
           <div>
-            <label class="block text-gray-700 font-semibold mb-2" id="label-age">나이 (40-70세)</label>
-            <input type="number" id="age" min="40" max="70" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+            <label class="block text-sm text-gray-700 font-semibold mb-1" id="label-age">나이 (40-70세)</label>
+            <input type="number" id="age" min="40" max="70" required class="w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
           </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div>
-            <label class="block text-gray-700 font-semibold mb-2" id="label-gender">성별</label>
-            <select id="gender" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+            <label class="block text-sm text-gray-700 font-semibold mb-1" id="label-gender">성별</label>
+            <select id="gender" required class="w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
               <option value="">선택하세요</option>
               <option value="남성">남성</option>
               <option value="여성">여성</option>
             </select>
           </div>
           <div>
-            <label class="block text-gray-700 font-semibold mb-2" id="label-country">국가</label>
-            <select id="country" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+            <label class="block text-sm text-gray-700 font-semibold mb-1" id="label-country">국가</label>
+            <select id="country" required class="w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
               <option value="">선택하세요</option>
               <option value="한국">한국</option>
               <option value="미국">미국</option>
@@ -379,29 +379,29 @@ function getMainPageHTML() {
         </div>
 
         <div>
-          <label class="block text-gray-700 font-semibold mb-2" id="label-about">자기소개</label>
-          <textarea id="about" rows="3" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"></textarea>
+          <label class="block text-sm text-gray-700 font-semibold mb-1" id="label-about">자기소개</label>
+          <textarea id="about" rows="2" class="w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"></textarea>
         </div>
 
         <div>
-          <label class="block text-gray-700 font-semibold mb-2" id="label-interests">관심사</label>
-          <input type="text" id="interests" placeholder="예: 요리, 여행, 독서" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+          <label class="block text-sm text-gray-700 font-semibold mb-1" id="label-interests">관심사</label>
+          <input type="text" id="interests" placeholder="예: 요리, 여행, 독서" class="w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
         </div>
 
         <!-- 신분증 사진 업로드 -->
-        <div class="border-2 border-dashed border-pink-300 rounded-lg p-6 bg-pink-50">
-          <label class="block text-gray-700 font-bold mb-3" id="label-id-photo">
+        <div class="border-2 border-dashed border-pink-300 rounded-lg p-4 bg-pink-50">
+          <label class="block text-sm text-gray-700 font-bold mb-2" id="label-id-photo">
             <i class="fas fa-id-card text-pink-600"></i> 신분증 인증 사진 업로드
           </label>
           
           <!-- 예시 사진 표시 -->
-          <div class="mb-4 flex flex-col md:flex-row gap-4 items-center">
+          <div class="mb-3 flex flex-col md:flex-row gap-3 items-center">
             <div class="w-full md:w-1/3">
               <img src="https://www.genspark.ai/api/files/s/gQ21EItf" alt="신분증 예시" class="w-full rounded-lg shadow-md">
             </div>
-            <div class="w-full md:w-2/3 text-sm text-gray-700" id="id-photo-instruction">
-              <p class="font-semibold text-pink-600 mb-2">📸 이렇게 촬영해주세요:</p>
-              <ul class="list-disc list-inside space-y-1">
+            <div class="w-full md:w-2/3 text-xs text-gray-700" id="id-photo-instruction">
+              <p class="font-semibold text-pink-600 mb-1">📸 이렇게 촬영해주세요:</p>
+              <ul class="list-disc list-inside space-y-0.5">
                 <li>여권, 운전면허증, 주민등록증 중 하나를 손에 들고</li>
                 <li>본인 얼굴과 신분증이 함께 나오도록 촬영</li>
                 <li>신분증의 사진과 정보가 선명하게 보여야 합니다</li>
@@ -410,53 +410,53 @@ function getMainPageHTML() {
             </div>
           </div>
 
-          <input type="file" id="idPhoto" accept="image/*" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 bg-white">
-          <div id="photoPreview" class="mt-3 hidden">
+          <input type="file" id="idPhoto" accept="image/*" class="w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 bg-white">
+          <div id="photoPreview" class="mt-2 hidden">
             <img id="previewImage" class="w-full max-w-md mx-auto rounded-lg shadow-md">
           </div>
         </div>
 
         <!-- 안전정책 안내 -->
-        <div class="bg-gradient-to-r from-red-50 to-orange-50 border-l-4 border-red-500 p-6 rounded-lg shadow-md">
-          <h3 class="font-bold text-lg text-red-700 mb-3 flex items-center" id="safety-policy-title">
+        <div class="bg-gradient-to-r from-red-50 to-orange-50 border-l-4 border-red-500 p-4 rounded-lg shadow-md">
+          <h3 class="font-bold text-base text-red-700 mb-2 flex items-center" id="safety-policy-title">
             <i class="fas fa-shield-alt mr-2"></i> 로맨스스캠 및 보이스피싱 예방을 위한 안전정책 안내
           </h3>
-          <p class="text-sm text-gray-700 mb-3" id="safety-cooperation">
+          <p class="text-xs text-gray-700 mb-2" id="safety-cooperation">
             안전한 서비스 이용을 위해 협조 부탁드립니다.<br>
             회원가입 시 아래 사항을 반드시 제출해야 가입이 가능합니다.
           </p>
           
-          <div class="bg-white p-4 rounded-lg mb-3 border-l-4 border-yellow-500">
-            <h4 class="font-bold text-yellow-700 mb-2" id="vip-requirements">
+          <div class="bg-white p-3 rounded-lg mb-2 border-l-4 border-yellow-500">
+            <h4 class="font-bold text-sm text-yellow-700 mb-1" id="vip-requirements">
               <i class="fas fa-crown mr-1"></i> VIP 회원가입 시 필수 제출 사항
             </h4>
-            <p class="text-sm text-gray-700" id="vip-description">
+            <p class="text-xs text-gray-700" id="vip-description">
               여권, 운전면허증, 주민등록증 등 본인 신분증을 손에 들고 얼굴과 함께 촬영한 사진을 업로드해야 합니다.<br>
               본인 확인을 위한 절차이며, 제출 정보는 안전하게 보호됩니다.
             </p>
           </div>
 
-          <div class="bg-white p-4 rounded-lg border-l-4 border-blue-500">
-            <h4 class="font-bold text-blue-700 mb-2" id="regular-requirements">
+          <div class="bg-white p-3 rounded-lg border-l-4 border-blue-500">
+            <h4 class="font-bold text-sm text-blue-700 mb-1" id="regular-requirements">
               <i class="fas fa-users mr-1"></i> 일반 회원가입 필수 사항
             </h4>
-            <p class="text-sm text-gray-700" id="regular-description">
+            <p class="text-xs text-gray-700" id="regular-description">
               기존에 사용 중인 SNS 계정(예: 소셜 네트워크) 3개 이상을 등록해야 회원가입이 가능합니다.
             </p>
           </div>
 
-          <p class="text-xs text-gray-600 mt-3 italic" id="safety-note">
+          <p class="text-xs text-gray-600 mt-2 italic" id="safety-note">
             <i class="fas fa-exclamation-circle text-red-500"></i> 
             귀찮으시더라도, 사기 방지 및 안전한 커뮤니티 운영을 위한 필수 절차이므로 협조 부탁드립니다.
           </p>
         </div>
 
-        <button type="submit" class="w-full bg-pink-600 text-white font-bold py-3 rounded-lg hover:bg-pink-700 transition" id="btn-register">
+        <button type="submit" class="w-full bg-pink-600 text-white text-sm font-bold py-2.5 rounded-lg hover:bg-pink-700 transition" id="btn-register">
           <i class="fas fa-paper-plane"></i> 등록하기
         </button>
       </form>
 
-      <div id="registerResult" class="mt-4 hidden"></div>
+      <div id="registerResult" class="mt-3 hidden"></div>
     </div>
 
     <!-- 프로필 찾기 탭 -->
@@ -893,47 +893,47 @@ function getMainPageHTML() {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      width: 120px;
-      height: 120px;
+      width: 96px;
+      height: 96px;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 8px 24px rgba(102, 126, 234, 0.6);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
       z-index: 9998;
       transition: transform 0.3s ease;
     }
     .chatbot-button:hover { transform: scale(1.1); }
-    .chatbot-button i { color: white; font-size: 56px; }
+    .chatbot-button i { color: white; font-size: 45px; }
     .ai-badge {
       position: absolute;
-      top: -10px;
-      right: -10px;
+      top: -8px;
+      right: -8px;
       background: #ff4757;
       color: white;
-      width: 48px;
-      height: 48px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 16px;
       font-weight: bold;
-      border: 4px solid white;
+      border: 3px solid white;
     }
     .chatbot-window {
       position: fixed;
-      bottom: 150px;
+      bottom: 130px;
       right: 20px;
-      width: 760px;
+      width: 608px;
       max-width: calc(100vw - 40px);
-      height: 1000px;
-      max-height: calc(100vh - 180px);
+      height: 800px;
+      max-height: calc(100vh - 150px);
       background: white;
-      border-radius: 24px;
-      box-shadow: 0 16px 64px rgba(0, 0, 0, 0.3);
+      border-radius: 20px;
+      box-shadow: 0 12px 50px rgba(0, 0, 0, 0.3);
       z-index: 9999;
       display: none;
       flex-direction: column;
@@ -943,42 +943,42 @@ function getMainPageHTML() {
     .chatbot-header {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
-      padding: 32px;
+      padding: 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-    .chatbot-header-left { display: flex; align-items: center; gap: 24px; }
+    .chatbot-header-left { display: flex; align-items: center; gap: 18px; }
     .chatbot-avatar {
-      width: 80px;
-      height: 80px;
+      width: 64px;
+      height: 64px;
       background: white;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .chatbot-avatar i { color: #667eea; font-size: 48px; }
-    .chatbot-title h3 { margin: 0; font-size: 32px; font-weight: bold; }
-    .chatbot-title p { margin: 0; font-size: 24px; opacity: 0.9; }
-    .chatbot-close { cursor: pointer; font-size: 48px; opacity: 0.8; transition: opacity 0.2s; }
+    .chatbot-avatar i { color: #667eea; font-size: 38px; }
+    .chatbot-title h3 { margin: 0; font-size: 26px; font-weight: bold; }
+    .chatbot-title p { margin: 0; font-size: 19px; opacity: 0.9; }
+    .chatbot-close { cursor: pointer; font-size: 38px; opacity: 0.8; transition: opacity 0.2s; }
     .chatbot-close:hover { opacity: 1; }
-    .chatbot-body { flex: 1; overflow-y: auto; padding: 32px; background: #f7f9fc; }
+    .chatbot-body { flex: 1; overflow-y: auto; padding: 24px; background: #f7f9fc; }
     .faq-header {
       display: flex;
       align-items: center;
-      gap: 16px;
-      margin-bottom: 32px;
-      padding-bottom: 24px;
-      border-bottom: 4px solid #e0e7ff;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 3px solid #e0e7ff;
     }
-    .faq-header i { color: #667eea; font-size: 36px; }
-    .faq-header h4 { margin: 0; color: #1e293b; font-size: 30px; font-weight: 600; }
-    .faq-list { display: flex; flex-direction: column; gap: 16px; }
+    .faq-header i { color: #667eea; font-size: 29px; }
+    .faq-header h4 { margin: 0; color: #1e293b; font-size: 24px; font-weight: 600; }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
     .faq-item {
       background: white;
-      padding: 24px 32px;
-      border-radius: 16px;
+      padding: 18px 24px;
+      border-radius: 12px;
       cursor: pointer;
       transition: all 0.2s;
       border: 2px solid #e2e8f0;
@@ -989,58 +989,60 @@ function getMainPageHTML() {
     .faq-item:hover {
       background: #f1f5f9;
       border-color: #667eea;
-      transform: translateX(8px);
+      transform: translateX(6px);
     }
-    .faq-item span { font-size: 28px; color: #334155; flex: 1; }
-    .faq-item i { color: #94a3b8; font-size: 24px; }
+    .faq-item span { font-size: 22px; color: #334155; flex: 1; }
+    .faq-item i { color: #94a3b8; font-size: 19px; }
     .chatbot-answer {
       background: #ede9fe;
-      border-left: 8px solid #667eea;
-      padding: 32px;
-      border-radius: 16px;
-      margin-top: 32px;
+      border-left: 6px solid #667eea;
+      padding: 24px;
+      border-radius: 12px;
+      margin-top: 24px;
       display: none;
     }
     .chatbot-answer.active { display: block; animation: fadeIn 0.3s ease; }
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
+      from { opacity: 0; transform: translateY(-15px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .answer-text { color: #1e293b; font-size: 28px; line-height: 1.8; white-space: pre-wrap; }
+    .answer-text { color: #1e293b; font-size: 22px; line-height: 1.7; white-space: pre-wrap; }
     .back-button {
       background: #667eea;
       color: white;
       border: none;
-      padding: 16px 32px;
-      border-radius: 12px;
+      padding: 12px 24px;
+      border-radius: 10px;
       cursor: pointer;
-      font-size: 26px;
-      margin-top: 24px;
+      font-size: 21px;
+      margin-top: 18px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       transition: background 0.2s;
     }
     .back-button:hover { background: #5568d3; }
     @media (max-width: 768px) {
-      .chatbot-window { width: calc(100vw - 20px); right: 10px; bottom: 140px; height: calc(100vh - 160px); }
-      .chatbot-button { width: 112px; height: 112px; right: 15px; bottom: 15px; }
-      .chatbot-button i { font-size: 48px; }
-      .ai-badge { width: 40px; height: 40px; font-size: 16px; }
-      .chatbot-header { padding: 20px; }
-      .chatbot-avatar { width: 60px; height: 60px; }
-      .chatbot-avatar i { font-size: 36px; }
-      .chatbot-title h3 { font-size: 24px; }
-      .chatbot-title p { font-size: 18px; }
-      .chatbot-close { font-size: 36px; }
-      .chatbot-body { padding: 20px; }
-      .faq-header i { font-size: 28px; }
-      .faq-header h4 { font-size: 24px; }
-      .faq-item { padding: 18px 24px; }
-      .faq-item span { font-size: 22px; }
-      .faq-item i { font-size: 20px; }
-      .answer-text { font-size: 22px; }
-      .back-button { padding: 12px 24px; font-size: 20px; }
+      .chatbot-window { width: calc(100vw - 20px); right: 10px; bottom: 110px; height: calc(100vh - 130px); }
+      .chatbot-button { width: 90px; height: 90px; right: 15px; bottom: 15px; }
+      .chatbot-button i { font-size: 38px; }
+      .ai-badge { width: 32px; height: 32px; font-size: 13px; }
+      .chatbot-header { padding: 16px; }
+      .chatbot-avatar { width: 48px; height: 48px; }
+      .chatbot-avatar i { font-size: 29px; }
+      .chatbot-title h3 { font-size: 19px; }
+      .chatbot-title p { font-size: 14px; }
+      .chatbot-close { font-size: 29px; }
+      .chatbot-body { padding: 16px; }
+      .faq-header { margin-bottom: 18px; padding-bottom: 14px; gap: 10px; }
+      .faq-header i { font-size: 22px; }
+      .faq-header h4 { font-size: 19px; }
+      .faq-list { gap: 10px; }
+      .faq-item { padding: 14px 18px; }
+      .faq-item span { font-size: 18px; }
+      .faq-item i { font-size: 16px; }
+      .answer-text { font-size: 18px; line-height: 1.6; }
+      .back-button { padding: 10px 20px; font-size: 16px; margin-top: 14px; }
     }
   </style>
 

@@ -1839,35 +1839,35 @@ function getMainPageHTML() {
     </div>
 
     <!-- \uD504\uB85C\uD544 \uB4F1\uB85D \uD0ED -->
-    <div id="register-tab" class="tab-content max-w-4xl mx-auto bg-white rounded-lg shadow-2xl p-4 md:p-8">
-      <h2 class="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6" id="register-title">
+    <div id="register-tab" class="tab-content max-w-4xl mx-auto bg-white rounded-lg shadow-2xl p-3 md:p-6">
+      <h2 class="text-lg md:text-xl font-bold text-gray-800 mb-3 md:mb-4" id="register-title">
         <i class="fas fa-user-plus text-pink-500"></i> \uD504\uB85C\uD544 \uB4F1\uB85D
       </h2>
       
-      <form id="registerForm" class="space-y-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <form id="registerForm" class="space-y-3">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div>
-            <label class="block text-gray-700 font-semibold mb-2" id="label-name">\uC774\uB984</label>
-            <input type="text" id="name" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+            <label class="block text-sm text-gray-700 font-semibold mb-1" id="label-name">\uC774\uB984</label>
+            <input type="text" id="name" required class="w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
           </div>
           <div>
-            <label class="block text-gray-700 font-semibold mb-2" id="label-age">\uB098\uC774 (40-70\uC138)</label>
-            <input type="number" id="age" min="40" max="70" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+            <label class="block text-sm text-gray-700 font-semibold mb-1" id="label-age">\uB098\uC774 (40-70\uC138)</label>
+            <input type="number" id="age" min="40" max="70" required class="w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
           </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div>
-            <label class="block text-gray-700 font-semibold mb-2" id="label-gender">\uC131\uBCC4</label>
-            <select id="gender" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+            <label class="block text-sm text-gray-700 font-semibold mb-1" id="label-gender">\uC131\uBCC4</label>
+            <select id="gender" required class="w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
               <option value="">\uC120\uD0DD\uD558\uC138\uC694</option>
               <option value="\uB0A8\uC131">\uB0A8\uC131</option>
               <option value="\uC5EC\uC131">\uC5EC\uC131</option>
             </select>
           </div>
           <div>
-            <label class="block text-gray-700 font-semibold mb-2" id="label-country">\uAD6D\uAC00</label>
-            <select id="country" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+            <label class="block text-sm text-gray-700 font-semibold mb-1" id="label-country">\uAD6D\uAC00</label>
+            <select id="country" required class="w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
               <option value="">\uC120\uD0DD\uD558\uC138\uC694</option>
               <option value="\uD55C\uAD6D">\uD55C\uAD6D</option>
               <option value="\uBBF8\uAD6D">\uBBF8\uAD6D</option>
@@ -1882,29 +1882,29 @@ function getMainPageHTML() {
         </div>
 
         <div>
-          <label class="block text-gray-700 font-semibold mb-2" id="label-about">\uC790\uAE30\uC18C\uAC1C</label>
-          <textarea id="about" rows="3" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"></textarea>
+          <label class="block text-sm text-gray-700 font-semibold mb-1" id="label-about">\uC790\uAE30\uC18C\uAC1C</label>
+          <textarea id="about" rows="2" class="w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"></textarea>
         </div>
 
         <div>
-          <label class="block text-gray-700 font-semibold mb-2" id="label-interests">\uAD00\uC2EC\uC0AC</label>
-          <input type="text" id="interests" placeholder="\uC608: \uC694\uB9AC, \uC5EC\uD589, \uB3C5\uC11C" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+          <label class="block text-sm text-gray-700 font-semibold mb-1" id="label-interests">\uAD00\uC2EC\uC0AC</label>
+          <input type="text" id="interests" placeholder="\uC608: \uC694\uB9AC, \uC5EC\uD589, \uB3C5\uC11C" class="w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
         </div>
 
         <!-- \uC2E0\uBD84\uC99D \uC0AC\uC9C4 \uC5C5\uB85C\uB4DC -->
-        <div class="border-2 border-dashed border-pink-300 rounded-lg p-6 bg-pink-50">
-          <label class="block text-gray-700 font-bold mb-3" id="label-id-photo">
+        <div class="border-2 border-dashed border-pink-300 rounded-lg p-4 bg-pink-50">
+          <label class="block text-sm text-gray-700 font-bold mb-2" id="label-id-photo">
             <i class="fas fa-id-card text-pink-600"></i> \uC2E0\uBD84\uC99D \uC778\uC99D \uC0AC\uC9C4 \uC5C5\uB85C\uB4DC
           </label>
           
           <!-- \uC608\uC2DC \uC0AC\uC9C4 \uD45C\uC2DC -->
-          <div class="mb-4 flex flex-col md:flex-row gap-4 items-center">
+          <div class="mb-3 flex flex-col md:flex-row gap-3 items-center">
             <div class="w-full md:w-1/3">
               <img src="https://www.genspark.ai/api/files/s/gQ21EItf" alt="\uC2E0\uBD84\uC99D \uC608\uC2DC" class="w-full rounded-lg shadow-md">
             </div>
-            <div class="w-full md:w-2/3 text-sm text-gray-700" id="id-photo-instruction">
-              <p class="font-semibold text-pink-600 mb-2">\u{1F4F8} \uC774\uB807\uAC8C \uCD2C\uC601\uD574\uC8FC\uC138\uC694:</p>
-              <ul class="list-disc list-inside space-y-1">
+            <div class="w-full md:w-2/3 text-xs text-gray-700" id="id-photo-instruction">
+              <p class="font-semibold text-pink-600 mb-1">\u{1F4F8} \uC774\uB807\uAC8C \uCD2C\uC601\uD574\uC8FC\uC138\uC694:</p>
+              <ul class="list-disc list-inside space-y-0.5">
                 <li>\uC5EC\uAD8C, \uC6B4\uC804\uBA74\uD5C8\uC99D, \uC8FC\uBBFC\uB4F1\uB85D\uC99D \uC911 \uD558\uB098\uB97C \uC190\uC5D0 \uB4E4\uACE0</li>
                 <li>\uBCF8\uC778 \uC5BC\uAD74\uACFC \uC2E0\uBD84\uC99D\uC774 \uD568\uAED8 \uB098\uC624\uB3C4\uB85D \uCD2C\uC601</li>
                 <li>\uC2E0\uBD84\uC99D\uC758 \uC0AC\uC9C4\uACFC \uC815\uBCF4\uAC00 \uC120\uBA85\uD558\uAC8C \uBCF4\uC5EC\uC57C \uD569\uB2C8\uB2E4</li>
@@ -1913,53 +1913,53 @@ function getMainPageHTML() {
             </div>
           </div>
 
-          <input type="file" id="idPhoto" accept="image/*" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 bg-white">
-          <div id="photoPreview" class="mt-3 hidden">
+          <input type="file" id="idPhoto" accept="image/*" class="w-full px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 bg-white">
+          <div id="photoPreview" class="mt-2 hidden">
             <img id="previewImage" class="w-full max-w-md mx-auto rounded-lg shadow-md">
           </div>
         </div>
 
         <!-- \uC548\uC804\uC815\uCC45 \uC548\uB0B4 -->
-        <div class="bg-gradient-to-r from-red-50 to-orange-50 border-l-4 border-red-500 p-6 rounded-lg shadow-md">
-          <h3 class="font-bold text-lg text-red-700 mb-3 flex items-center" id="safety-policy-title">
+        <div class="bg-gradient-to-r from-red-50 to-orange-50 border-l-4 border-red-500 p-4 rounded-lg shadow-md">
+          <h3 class="font-bold text-base text-red-700 mb-2 flex items-center" id="safety-policy-title">
             <i class="fas fa-shield-alt mr-2"></i> \uB85C\uB9E8\uC2A4\uC2A4\uCEA0 \uBC0F \uBCF4\uC774\uC2A4\uD53C\uC2F1 \uC608\uBC29\uC744 \uC704\uD55C \uC548\uC804\uC815\uCC45 \uC548\uB0B4
           </h3>
-          <p class="text-sm text-gray-700 mb-3" id="safety-cooperation">
+          <p class="text-xs text-gray-700 mb-2" id="safety-cooperation">
             \uC548\uC804\uD55C \uC11C\uBE44\uC2A4 \uC774\uC6A9\uC744 \uC704\uD574 \uD611\uC870 \uBD80\uD0C1\uB4DC\uB9BD\uB2C8\uB2E4.<br>
             \uD68C\uC6D0\uAC00\uC785 \uC2DC \uC544\uB798 \uC0AC\uD56D\uC744 \uBC18\uB4DC\uC2DC \uC81C\uCD9C\uD574\uC57C \uAC00\uC785\uC774 \uAC00\uB2A5\uD569\uB2C8\uB2E4.
           </p>
           
-          <div class="bg-white p-4 rounded-lg mb-3 border-l-4 border-yellow-500">
-            <h4 class="font-bold text-yellow-700 mb-2" id="vip-requirements">
+          <div class="bg-white p-3 rounded-lg mb-2 border-l-4 border-yellow-500">
+            <h4 class="font-bold text-sm text-yellow-700 mb-1" id="vip-requirements">
               <i class="fas fa-crown mr-1"></i> VIP \uD68C\uC6D0\uAC00\uC785 \uC2DC \uD544\uC218 \uC81C\uCD9C \uC0AC\uD56D
             </h4>
-            <p class="text-sm text-gray-700" id="vip-description">
+            <p class="text-xs text-gray-700" id="vip-description">
               \uC5EC\uAD8C, \uC6B4\uC804\uBA74\uD5C8\uC99D, \uC8FC\uBBFC\uB4F1\uB85D\uC99D \uB4F1 \uBCF8\uC778 \uC2E0\uBD84\uC99D\uC744 \uC190\uC5D0 \uB4E4\uACE0 \uC5BC\uAD74\uACFC \uD568\uAED8 \uCD2C\uC601\uD55C \uC0AC\uC9C4\uC744 \uC5C5\uB85C\uB4DC\uD574\uC57C \uD569\uB2C8\uB2E4.<br>
               \uBCF8\uC778 \uD655\uC778\uC744 \uC704\uD55C \uC808\uCC28\uC774\uBA70, \uC81C\uCD9C \uC815\uBCF4\uB294 \uC548\uC804\uD558\uAC8C \uBCF4\uD638\uB429\uB2C8\uB2E4.
             </p>
           </div>
 
-          <div class="bg-white p-4 rounded-lg border-l-4 border-blue-500">
-            <h4 class="font-bold text-blue-700 mb-2" id="regular-requirements">
+          <div class="bg-white p-3 rounded-lg border-l-4 border-blue-500">
+            <h4 class="font-bold text-sm text-blue-700 mb-1" id="regular-requirements">
               <i class="fas fa-users mr-1"></i> \uC77C\uBC18 \uD68C\uC6D0\uAC00\uC785 \uD544\uC218 \uC0AC\uD56D
             </h4>
-            <p class="text-sm text-gray-700" id="regular-description">
+            <p class="text-xs text-gray-700" id="regular-description">
               \uAE30\uC874\uC5D0 \uC0AC\uC6A9 \uC911\uC778 SNS \uACC4\uC815(\uC608: \uC18C\uC15C \uB124\uD2B8\uC6CC\uD06C) 3\uAC1C \uC774\uC0C1\uC744 \uB4F1\uB85D\uD574\uC57C \uD68C\uC6D0\uAC00\uC785\uC774 \uAC00\uB2A5\uD569\uB2C8\uB2E4.
             </p>
           </div>
 
-          <p class="text-xs text-gray-600 mt-3 italic" id="safety-note">
+          <p class="text-xs text-gray-600 mt-2 italic" id="safety-note">
             <i class="fas fa-exclamation-circle text-red-500"></i> 
             \uADC0\uCC2E\uC73C\uC2DC\uB354\uB77C\uB3C4, \uC0AC\uAE30 \uBC29\uC9C0 \uBC0F \uC548\uC804\uD55C \uCEE4\uBBA4\uB2C8\uD2F0 \uC6B4\uC601\uC744 \uC704\uD55C \uD544\uC218 \uC808\uCC28\uC774\uBBC0\uB85C \uD611\uC870 \uBD80\uD0C1\uB4DC\uB9BD\uB2C8\uB2E4.
           </p>
         </div>
 
-        <button type="submit" class="w-full bg-pink-600 text-white font-bold py-3 rounded-lg hover:bg-pink-700 transition" id="btn-register">
+        <button type="submit" class="w-full bg-pink-600 text-white text-sm font-bold py-2.5 rounded-lg hover:bg-pink-700 transition" id="btn-register">
           <i class="fas fa-paper-plane"></i> \uB4F1\uB85D\uD558\uAE30
         </button>
       </form>
 
-      <div id="registerResult" class="mt-4 hidden"></div>
+      <div id="registerResult" class="mt-3 hidden"></div>
     </div>
 
     <!-- \uD504\uB85C\uD544 \uCC3E\uAE30 \uD0ED -->
@@ -2396,47 +2396,47 @@ function getMainPageHTML() {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      width: 120px;
-      height: 120px;
+      width: 96px;
+      height: 96px;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 8px 24px rgba(102, 126, 234, 0.6);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
       z-index: 9998;
       transition: transform 0.3s ease;
     }
     .chatbot-button:hover { transform: scale(1.1); }
-    .chatbot-button i { color: white; font-size: 56px; }
+    .chatbot-button i { color: white; font-size: 45px; }
     .ai-badge {
       position: absolute;
-      top: -10px;
-      right: -10px;
+      top: -8px;
+      right: -8px;
       background: #ff4757;
       color: white;
-      width: 48px;
-      height: 48px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 16px;
       font-weight: bold;
-      border: 4px solid white;
+      border: 3px solid white;
     }
     .chatbot-window {
       position: fixed;
-      bottom: 150px;
+      bottom: 130px;
       right: 20px;
-      width: 760px;
+      width: 608px;
       max-width: calc(100vw - 40px);
-      height: 1000px;
-      max-height: calc(100vh - 180px);
+      height: 800px;
+      max-height: calc(100vh - 150px);
       background: white;
-      border-radius: 24px;
-      box-shadow: 0 16px 64px rgba(0, 0, 0, 0.3);
+      border-radius: 20px;
+      box-shadow: 0 12px 50px rgba(0, 0, 0, 0.3);
       z-index: 9999;
       display: none;
       flex-direction: column;
@@ -2446,42 +2446,42 @@ function getMainPageHTML() {
     .chatbot-header {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
-      padding: 32px;
+      padding: 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-    .chatbot-header-left { display: flex; align-items: center; gap: 24px; }
+    .chatbot-header-left { display: flex; align-items: center; gap: 18px; }
     .chatbot-avatar {
-      width: 80px;
-      height: 80px;
+      width: 64px;
+      height: 64px;
       background: white;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .chatbot-avatar i { color: #667eea; font-size: 48px; }
-    .chatbot-title h3 { margin: 0; font-size: 32px; font-weight: bold; }
-    .chatbot-title p { margin: 0; font-size: 24px; opacity: 0.9; }
-    .chatbot-close { cursor: pointer; font-size: 48px; opacity: 0.8; transition: opacity 0.2s; }
+    .chatbot-avatar i { color: #667eea; font-size: 38px; }
+    .chatbot-title h3 { margin: 0; font-size: 26px; font-weight: bold; }
+    .chatbot-title p { margin: 0; font-size: 19px; opacity: 0.9; }
+    .chatbot-close { cursor: pointer; font-size: 38px; opacity: 0.8; transition: opacity 0.2s; }
     .chatbot-close:hover { opacity: 1; }
-    .chatbot-body { flex: 1; overflow-y: auto; padding: 32px; background: #f7f9fc; }
+    .chatbot-body { flex: 1; overflow-y: auto; padding: 24px; background: #f7f9fc; }
     .faq-header {
       display: flex;
       align-items: center;
-      gap: 16px;
-      margin-bottom: 32px;
-      padding-bottom: 24px;
-      border-bottom: 4px solid #e0e7ff;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 3px solid #e0e7ff;
     }
-    .faq-header i { color: #667eea; font-size: 36px; }
-    .faq-header h4 { margin: 0; color: #1e293b; font-size: 30px; font-weight: 600; }
-    .faq-list { display: flex; flex-direction: column; gap: 16px; }
+    .faq-header i { color: #667eea; font-size: 29px; }
+    .faq-header h4 { margin: 0; color: #1e293b; font-size: 24px; font-weight: 600; }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
     .faq-item {
       background: white;
-      padding: 24px 32px;
-      border-radius: 16px;
+      padding: 18px 24px;
+      border-radius: 12px;
       cursor: pointer;
       transition: all 0.2s;
       border: 2px solid #e2e8f0;
@@ -2492,58 +2492,60 @@ function getMainPageHTML() {
     .faq-item:hover {
       background: #f1f5f9;
       border-color: #667eea;
-      transform: translateX(8px);
+      transform: translateX(6px);
     }
-    .faq-item span { font-size: 28px; color: #334155; flex: 1; }
-    .faq-item i { color: #94a3b8; font-size: 24px; }
+    .faq-item span { font-size: 22px; color: #334155; flex: 1; }
+    .faq-item i { color: #94a3b8; font-size: 19px; }
     .chatbot-answer {
       background: #ede9fe;
-      border-left: 8px solid #667eea;
-      padding: 32px;
-      border-radius: 16px;
-      margin-top: 32px;
+      border-left: 6px solid #667eea;
+      padding: 24px;
+      border-radius: 12px;
+      margin-top: 24px;
       display: none;
     }
     .chatbot-answer.active { display: block; animation: fadeIn 0.3s ease; }
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
+      from { opacity: 0; transform: translateY(-15px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .answer-text { color: #1e293b; font-size: 28px; line-height: 1.8; white-space: pre-wrap; }
+    .answer-text { color: #1e293b; font-size: 22px; line-height: 1.7; white-space: pre-wrap; }
     .back-button {
       background: #667eea;
       color: white;
       border: none;
-      padding: 16px 32px;
-      border-radius: 12px;
+      padding: 12px 24px;
+      border-radius: 10px;
       cursor: pointer;
-      font-size: 26px;
-      margin-top: 24px;
+      font-size: 21px;
+      margin-top: 18px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       transition: background 0.2s;
     }
     .back-button:hover { background: #5568d3; }
     @media (max-width: 768px) {
-      .chatbot-window { width: calc(100vw - 20px); right: 10px; bottom: 140px; height: calc(100vh - 160px); }
-      .chatbot-button { width: 112px; height: 112px; right: 15px; bottom: 15px; }
-      .chatbot-button i { font-size: 48px; }
-      .ai-badge { width: 40px; height: 40px; font-size: 16px; }
-      .chatbot-header { padding: 20px; }
-      .chatbot-avatar { width: 60px; height: 60px; }
-      .chatbot-avatar i { font-size: 36px; }
-      .chatbot-title h3 { font-size: 24px; }
-      .chatbot-title p { font-size: 18px; }
-      .chatbot-close { font-size: 36px; }
-      .chatbot-body { padding: 20px; }
-      .faq-header i { font-size: 28px; }
-      .faq-header h4 { font-size: 24px; }
-      .faq-item { padding: 18px 24px; }
-      .faq-item span { font-size: 22px; }
-      .faq-item i { font-size: 20px; }
-      .answer-text { font-size: 22px; }
-      .back-button { padding: 12px 24px; font-size: 20px; }
+      .chatbot-window { width: calc(100vw - 20px); right: 10px; bottom: 110px; height: calc(100vh - 130px); }
+      .chatbot-button { width: 90px; height: 90px; right: 15px; bottom: 15px; }
+      .chatbot-button i { font-size: 38px; }
+      .ai-badge { width: 32px; height: 32px; font-size: 13px; }
+      .chatbot-header { padding: 16px; }
+      .chatbot-avatar { width: 48px; height: 48px; }
+      .chatbot-avatar i { font-size: 29px; }
+      .chatbot-title h3 { font-size: 19px; }
+      .chatbot-title p { font-size: 14px; }
+      .chatbot-close { font-size: 29px; }
+      .chatbot-body { padding: 16px; }
+      .faq-header { margin-bottom: 18px; padding-bottom: 14px; gap: 10px; }
+      .faq-header i { font-size: 22px; }
+      .faq-header h4 { font-size: 19px; }
+      .faq-list { gap: 10px; }
+      .faq-item { padding: 14px 18px; }
+      .faq-item span { font-size: 18px; }
+      .faq-item i { font-size: 16px; }
+      .answer-text { font-size: 18px; line-height: 1.6; }
+      .back-button { padding: 10px 20px; font-size: 16px; margin-top: 14px; }
     }
   </style>
 
