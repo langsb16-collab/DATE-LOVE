@@ -683,6 +683,9 @@ function getMainPageHTML() {
         document.body.setAttribute('dir', 'ltr');
       }
       
+      // HTML 내용이 포함된 요소들
+      const htmlElements = ['id-photo-instruction', 'safety-cooperation', 'vip-description', 'regular-description'];
+      
       for (const [id, text] of Object.entries(trans)) {
         const elem = document.getElementById(id);
         if (elem) {
@@ -693,6 +696,9 @@ function getMainPageHTML() {
             } else {
               elem.innerHTML = text;
             }
+          } else if (htmlElements.includes(id)) {
+            // HTML 내용이 포함된 요소는 innerHTML 사용
+            elem.innerHTML = text;
           } else {
             const icon = elem.querySelector('i');
             if (icon) {
