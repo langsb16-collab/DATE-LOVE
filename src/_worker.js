@@ -1151,12 +1151,26 @@ function getMainPageHTML() {
     if (langSelector) {
       langSelector.addEventListener('change', function() {
         currentChatbotLang = this.value;
-        loadChatbotFAQs();
+        if (document.getElementById('chatbotWindow').classList.contains('active')) {
+          loadChatbotFAQs();
+        }
       });
     }
 
-    // 초기 챗봇 로드
-    loadChatbotFAQs();
+    // DOM 준비 후 초기 챗봇 FAQ 데이터 로드
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        // DOM이 준비되면 초기 데이터 설정 (챗봇이 열릴 때 사용)
+        if (document.getElementById('faqList')) {
+          loadChatbotFAQs();
+        }
+      });
+    } else {
+      // 이미 DOM이 로드된 경우
+      if (document.getElementById('faqList')) {
+        loadChatbotFAQs();
+      }
+    }
   </script>
 </body>
 </html>`;

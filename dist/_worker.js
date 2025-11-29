@@ -2654,12 +2654,26 @@ function getMainPageHTML() {
     if (langSelector) {
       langSelector.addEventListener('change', function() {
         currentChatbotLang = this.value;
-        loadChatbotFAQs();
+        if (document.getElementById('chatbotWindow').classList.contains('active')) {
+          loadChatbotFAQs();
+        }
       });
     }
 
-    // \uCD08\uAE30 \uCC57\uBD07 \uB85C\uB4DC
-    loadChatbotFAQs();
+    // DOM \uC900\uBE44 \uD6C4 \uCD08\uAE30 \uCC57\uBD07 FAQ \uB370\uC774\uD130 \uB85C\uB4DC
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        // DOM\uC774 \uC900\uBE44\uB418\uBA74 \uCD08\uAE30 \uB370\uC774\uD130 \uC124\uC815 (\uCC57\uBD07\uC774 \uC5F4\uB9B4 \uB54C \uC0AC\uC6A9)
+        if (document.getElementById('faqList')) {
+          loadChatbotFAQs();
+        }
+      });
+    } else {
+      // \uC774\uBBF8 DOM\uC774 \uB85C\uB4DC\uB41C \uACBD\uC6B0
+      if (document.getElementById('faqList')) {
+        loadChatbotFAQs();
+      }
+    }
   </script>
 </body>
 </html>`;
