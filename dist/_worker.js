@@ -2192,23 +2192,43 @@ function getMainPageHTML() {
       for (const [id, text] of Object.entries(trans)) {
         const elem = document.getElementById(id);
         if (elem) {
-          if (elem.tagName === 'BUTTON') {
+          // \uD0ED \uBC84\uD2BC \uCC98\uB9AC (onclick \uC18D\uC131 \uC720\uC9C0)
+          if (elem.classList.contains('tab-btn')) {
+            const icon = elem.querySelector('i');
+            const span = elem.querySelector('span');
+            if (icon && span) {
+              span.textContent = text;
+            } else if (icon) {
+              elem.innerHTML = icon.outerHTML + ' <span class="hidden sm:inline">' + text + '</span>';
+            } else {
+              elem.innerHTML = '<span class="hidden sm:inline">' + text + '</span>';
+            }
+          }
+          // \uC77C\uBC18 \uBC84\uD2BC \uCC98\uB9AC
+          else if (elem.tagName === 'BUTTON') {
             const icon = elem.querySelector('i');
             if (icon) {
-              elem.innerHTML = icon.outerHTML + ' <span class="hidden sm:inline">' + text + '</span>';
+              elem.innerHTML = icon.outerHTML + ' ' + text;
             } else {
               elem.innerHTML = text;
             }
-          } else if (htmlElements.includes(id)) {
-            // HTML \uB0B4\uC6A9\uC774 \uD3EC\uD568\uB41C \uC694\uC18C\uB294 innerHTML \uC0AC\uC6A9
+          }
+          // HTML \uB0B4\uC6A9\uC774 \uD3EC\uD568\uB41C \uC694\uC18C
+          else if (htmlElements.includes(id)) {
             elem.innerHTML = text;
-          } else {
+          }
+          // \uC81C\uBAA9 \uC694\uC18C (\uC544\uC774\uCF58 \uD3EC\uD568)
+          else if (id.includes('-title') || id.includes('-requirements')) {
             const icon = elem.querySelector('i');
             if (icon) {
               elem.innerHTML = icon.outerHTML + ' ' + text;
             } else {
               elem.textContent = text;
             }
+          }
+          // \uC77C\uBC18 \uD14D\uC2A4\uD2B8
+          else {
+            elem.textContent = text;
           }
         }
       }

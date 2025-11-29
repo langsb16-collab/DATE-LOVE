@@ -689,23 +689,43 @@ function getMainPageHTML() {
       for (const [id, text] of Object.entries(trans)) {
         const elem = document.getElementById(id);
         if (elem) {
-          if (elem.tagName === 'BUTTON') {
+          // 탭 버튼 처리 (onclick 속성 유지)
+          if (elem.classList.contains('tab-btn')) {
+            const icon = elem.querySelector('i');
+            const span = elem.querySelector('span');
+            if (icon && span) {
+              span.textContent = text;
+            } else if (icon) {
+              elem.innerHTML = icon.outerHTML + ' <span class="hidden sm:inline">' + text + '</span>';
+            } else {
+              elem.innerHTML = '<span class="hidden sm:inline">' + text + '</span>';
+            }
+          }
+          // 일반 버튼 처리
+          else if (elem.tagName === 'BUTTON') {
             const icon = elem.querySelector('i');
             if (icon) {
-              elem.innerHTML = icon.outerHTML + ' <span class="hidden sm:inline">' + text + '</span>';
+              elem.innerHTML = icon.outerHTML + ' ' + text;
             } else {
               elem.innerHTML = text;
             }
-          } else if (htmlElements.includes(id)) {
-            // HTML 내용이 포함된 요소는 innerHTML 사용
+          }
+          // HTML 내용이 포함된 요소
+          else if (htmlElements.includes(id)) {
             elem.innerHTML = text;
-          } else {
+          }
+          // 제목 요소 (아이콘 포함)
+          else if (id.includes('-title') || id.includes('-requirements')) {
             const icon = elem.querySelector('i');
             if (icon) {
               elem.innerHTML = icon.outerHTML + ' ' + text;
             } else {
               elem.textContent = text;
             }
+          }
+          // 일반 텍스트
+          else {
+            elem.textContent = text;
           }
         }
       }
