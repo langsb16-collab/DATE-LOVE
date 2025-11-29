@@ -1,3 +1,4 @@
 name = "jtbit"
 compatibility_date = "2024-11-28"
-pages_build_output_dir = "dist"
+main = "src/index.ts"
+compatibility_flags = ["nodejs_compat"]

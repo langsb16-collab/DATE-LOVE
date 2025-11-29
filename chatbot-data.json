@@ -1,0 +1,164 @@
+{
+  "ko": [
+    {
+      "id": 1,
+      "question": "CoupleGate는 어떤 플랫폼인가요?",
+      "answer": "CoupleGate는 전 세계 사람들과 진지한 국제 연애·결혼을 연결하는 글로벌 매칭 플랫폼입니다. AI 기반 매칭, 실시간 번역, 화상통화 등 장거리·국제 연애에 필요한 기능을 모두 제공합니다."
+    },
+    {
+      "id": 2,
+      "question": "주 이용자는 어떤 사람들인가요?",
+      "answer": "40대·50대·60대 싱글, 돌싱, 글로벌 연애·결혼을 원하는 분들이 중심입니다. 신뢰성 있는 대화·매칭을 위해 엄격한 인증 시스템이 적용됩니다."
+    },
+    {
+      "id": 3,
+      "question": "무료 회원과 유료 회원 차이가 무엇인가요?",
+      "answer": "무료 회원: 메뉴·검색 일부 기능만 사용 가능\n유료 회원: 모든 기능 개방 (매칭, 메시지, 화상통화, 번역, 고급 필터, 프로필 분석 등)\n3개 이상 소셜 미디어 인증 필수 → 회원 자격 활성화"
+    },
+    {
+      "id": 4,
+      "question": "회원가입은 어떻게 하나요?",
+      "answer": "'Sign Up Free' 클릭 → 이메일 입력\n3개 이상 SNS 계정 인증 (Facebook/Instagram/Kakao/X/Naver/Google/WeChat)\n프로필 사진·자기소개 작성\n무료 회원 자격 획득"
+    },
+    {
+      "id": 5,
+      "question": "SNS 인증은 왜 3개 이상 필요한가요?",
+      "answer": "국제 매칭 플랫폼에서 가장 중요한 요소는 신뢰성 확보입니다. 다중 SNS 인증은 사기 계정을 차단하고 안정적인 매칭을 제공합니다."
+    },
+    {
+      "id": 6,
+      "question": "어떤 계정들을 인증할 수 있나요?",
+      "answer": "Facebook, Instagram, Kakao, X(Twitter), Naver, Google, WeChat — 총 7개 중 3개 이상 인증해야 회원 가입 완료됩니다."
+    },
+    {
+      "id": 7,
+      "question": "얼굴 인증·신분증 인증은 무엇인가요?",
+      "answer": "AI 기반 얼굴 매칭·ID 인증을 통해 가짜 사진·도용을 방지하고 실제 본인임을 자동 검증합니다."
+    },
+    {
+      "id": 8,
+      "question": "AI 프로필 자동 검증 기능이 있나요?",
+      "answer": "예. Deepfake·합성·중복 사진을 AI가 자동 분석해 위험 계정을 걸러줍니다."
+    },
+    {
+      "id": 9,
+      "question": "AI 프로필 자동 작성 기능은 무엇인가요?",
+      "answer": "업로드한 사진·관심사를 분석해 자기소개 자동 생성, 최고의 사진 조합 추천, 매력적인 문장 리라이팅 등을 자동으로 도와줍니다."
+    },
+    {
+      "id": 10,
+      "question": "문화 차이 코칭 기능이 있나요?",
+      "answer": "있습니다. 국가별 데이트 매너·주의사항·금기사항을 자동 안내하여 오해 없이 관계를 유지할 수 있도록 도와줍니다. 예: 한국 남성 ↔ 베트남 여성 대화 팁 등"
+    },
+    {
+      "id": 11,
+      "question": "AI 번역 기능은 어떻게 동작하나요?",
+      "answer": "메시지를 보내면 자동으로 상대 국가 언어로 번역되며 원문 + 번역문이 함께 표시됩니다."
+    },
+    {
+      "id": 12,
+      "question": "상대방 응답이 느린 이유를 분석해주는 기능이 있나요?",
+      "answer": "있습니다. 메시지 패턴·감정 분석을 기반으로 '바빠서 지연', '관심도 낮음', '신중함' 등을 AI가 추정해줍니다."
+    },
+    {
+      "id": 13,
+      "question": "음성 메시지도 번역되나요?",
+      "answer": "가능합니다. 음성을 텍스트로 변환 → 번역 → 감정 분석까지 자동 처리됩니다."
+    },
+    {
+      "id": 14,
+      "question": "사진은 몇 장까지 업로드할 수 있나요?",
+      "answer": "최대 10장까지 가능합니다."
+    },
+    {
+      "id": 15,
+      "question": "동영상도 업로드할 수 있나요?",
+      "answer": "네, 최대 3개의 동영상을 업로드할 수 있습니다."
+    },
+    {
+      "id": 16,
+      "question": "프로필 매력도 점수 기능이 있나요?",
+      "answer": "있습니다. 사진·문장·관심사를 분석하여 Attractiveness Score를 제공하고 개선 팁까지 안내합니다."
+    },
+    {
+      "id": 17,
+      "question": "계정을 탈퇴하고 싶어요. 어떻게 하나요?",
+      "answer": "앱 오른쪽 상단 메뉴 → Settings(설정) → Account(계정 관리) 선택 → 화면 맨 하단의 Delete Account(계정 삭제) 클릭 → 본인 인증 후 탈퇴 완료\n※ 탈퇴 즉시 모든 프로필·매칭·메시지 기록이 삭제되며 복구가 불가능합니다."
+    },
+    {
+      "id": 18,
+      "question": "프리미엄 결제 후 환불을 받고 싶어요. 가능한가요?",
+      "answer": "결제 후 48시간 이내, 유료 기능을 사용하지 않은 경우 환불 가능합니다. 결제 오류 시에도 환불 가능합니다. 환불 문의는 고객센터로 영수증과 함께 제출해주세요."
+    },
+    {
+      "id": 19,
+      "question": "소셜 미디어 인증이 계속 실패해요. 이유가 뭔가요?",
+      "answer": "SNS 로그인 정보 오류, 동일 계정 중복 로그인, 권한 거부, 프로필 정보 부족, VPN 사용, 팝업 차단 등이 원인입니다. SNS 정상 로그인 확인, 팝업 허용, VPN 끄기, 기본정보 등록 후 다시 시도해주세요."
+    }
+  ],
+  "en": [
+    {
+      "id": 1,
+      "question": "What is CoupleGate?",
+      "answer": "CoupleGate is a global matching platform connecting people worldwide for serious international dating and marriage. It provides AI-based matching, real-time translation, video calls, and all features necessary for long-distance international relationships."
+    },
+    {
+      "id": 2,
+      "question": "Who are the main users?",
+      "answer": "Singles and divorcees in their 40s, 50s, and 60s seeking global dating and marriage. A strict verification system is applied for reliable conversations and matching."
+    },
+    {
+      "id": 3,
+      "question": "What's the difference between free and premium members?",
+      "answer": "Free members: Limited menu and search features\nPremium members: Full access (matching, messaging, video calls, translation, advanced filters, profile analysis)\n3+ social media verifications required → Membership activation"
+    }
+  ],
+  "zh": [
+    {
+      "id": 1,
+      "question": "CoupleGate是什么平台？",
+      "answer": "CoupleGate是一个全球配对平台，连接世界各地的人们进行认真的国际约会和婚姻。它提供基于AI的配对、实时翻译、视频通话等远距离国际关系所需的所有功能。"
+    },
+    {
+      "id": 2,
+      "question": "主要用户是哪些人？",
+      "answer": "40岁、50岁、60岁的单身者、离异者，希望全球约会和结婚的人为中心。为了可靠的对话和配对，应用了严格的认证系统。"
+    }
+  ],
+  "ja": [
+    {
+      "id": 1,
+      "question": "CoupleGateとは何ですか？",
+      "answer": "CoupleGateは、世界中の人々と真剣な国際恋愛・結婚を結ぶグローバルマッチングプラットフォームです。AIベースのマッチング、リアルタイム翻訳、ビデオ通話など、遠距離・国際恋愛に必要な機能をすべて提供します。"
+    },
+    {
+      "id": 2,
+      "question": "主な利用者はどのような人ですか？",
+      "answer": "40代・50代・60代のシングル、バツイチ、グローバル恋愛・結婚を希望する方が中心です。信頼性のある会話・マッチングのため、厳格な認証システムが適用されます。"
+    }
+  ],
+  "vi": [
+    {
+      "id": 1,
+      "question": "CoupleGate là gì?",
+      "answer": "CoupleGate là nền tảng kết nối toàn cầu kết nối mọi người trên toàn thế giới để hẹn hò và kết hôn quốc tế nghiêm túc. Nó cung cấp kết nối dựa trên AI, dịch thuật thời gian thực, cuộc gọi video và tất cả các tính năng cần thiết cho các mối quan hệ quốc tế đường dài."
+    },
+    {
+      "id": 2,
+      "question": "Người dùng chính là ai?",
+      "answer": "Độc thân và ly hôn ở độ tuổi 40, 50, 60 tìm kiếm hẹn hò và kết hôn toàn cầu. Hệ thống xác minh nghiêm ngặt được áp dụng cho các cuộc trò chuyện và kết nối đáng tin cậy."
+    }
+  ],
+  "ar": [
+    {
+      "id": 1,
+      "question": "ما هو CoupleGate؟",
+      "answer": "CoupleGate هو منصة مطابقة عالمية تربط الأشخاص في جميع أنحاء العالم للمواعدة والزواج الدولي الجاد. يوفر المطابقة المستندة إلى الذكاء الاصطناعي والترجمة في الوقت الفعلي ومكالمات الفيديو وجميع الميزات الضرورية للعلاقات الدولية بعيدة المدى."
+    },
+    {
+      "id": 2,
+      "question": "من هم المستخدمون الرئيسيون؟",
+      "answer": "العزاب والمطلقون في الأربعينيات والخمسينيات والستينيات الذين يبحثون عن المواعدة والزواج العالمي. يتم تطبيق نظام تحقق صارم للمحادثات والمطابقة الموثوقة."
+    }
+  ]
+}
