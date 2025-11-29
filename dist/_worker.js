@@ -1811,8 +1811,8 @@ function getMainPageHTML() {
           <option value="vi">Ti\u1EBFng Vi\u1EC7t</option>
           <option value="ar">\u0627\u0644\u0639\u0631\u0628\u064A\u0629</option>
         </select>
-        <a href="/notices" class="ml-4 bg-white text-pink-600 px-4 py-2 rounded-lg shadow-lg hover:bg-pink-50 font-bold">
-          <i class="fas fa-bell"></i> <span class="hidden md:inline">\uACF5\uC9C0\uC0AC\uD56D</span>
+        <a href="/notices" class="ml-4 bg-white text-pink-600 px-4 py-2 rounded-lg shadow-lg hover:bg-pink-50 font-bold" id="notices-link">
+          <i class="fas fa-bell"></i> <span class="hidden md:inline" id="notices-text">\uACF5\uC9C0\uC0AC\uD56D</span>
         </a>
       </div>
       
@@ -2010,6 +2010,7 @@ function getMainPageHTML() {
         'main-title': 'Couple Gate',
         'main-subtitle': '\uAD6D\uACBD\uC744 \uB118\uC5B4 \uC0AC\uB791\uC744 \uC5F0\uACB0\uD558\uB294 \uAD6D\uC81C \uC5F0\uC560\xB7\uACB0\uD63C \uB9E4\uCE6D \uD50C\uB7AB\uD3FC',
         'target-audience': '40\uB300\xB750\uB300\xB760\uB300 \uC2F1\uAE00\xB7\uB3CC\uC2F1 \uAE00\uB85C\uBC8C \uAD6D\uC81C \uC5F0\uC560\xB7\uACB0\uD63C',
+        'notices-text': '\uACF5\uC9C0\uC0AC\uD56D',
         'tab-register': '\uD504\uB85C\uD544 \uB4F1\uB85D',
         'tab-search': '\uD504\uB85C\uD544 \uCC3E\uAE30',
         'tab-stats': '\uD1B5\uACC4',
@@ -2038,6 +2039,7 @@ function getMainPageHTML() {
         'main-title': 'Couple Gate',
         'main-subtitle': 'International Dating & Marriage Platform Connecting Love Across Borders',
         'target-audience': 'Singles & Divorcees in 40s, 50s, 60s for Global Romance & Marriage',
+        'notices-text': 'Notices',
         'tab-register': 'Register',
         'tab-search': 'Search',
         'tab-stats': 'Statistics',
@@ -2066,6 +2068,7 @@ function getMainPageHTML() {
         'main-title': 'Couple Gate',
         'main-subtitle': '\u8DE8\u8D8A\u56FD\u5883\u8FDE\u63A5\u7231\u60C5\u7684\u56FD\u9645\u604B\u7231\xB7\u5A5A\u59FB\u914D\u5BF9\u5E73\u53F0',
         'target-audience': '40\u5C81\xB750\u5C81\xB760\u5C81\u5355\u8EAB\xB7\u79BB\u5F02\u5168\u7403\u56FD\u9645\u604B\u7231\xB7\u5A5A\u59FB',
+        'notices-text': '\u516C\u544A',
         'tab-register': '\u6CE8\u518C\u8D44\u6599',
         'tab-search': '\u67E5\u627E\u8D44\u6599',
         'tab-stats': '\u7EDF\u8BA1',
@@ -2094,6 +2097,7 @@ function getMainPageHTML() {
         'main-title': 'Couple Gate',
         'main-subtitle': '\u56FD\u5883\u3092\u8D8A\u3048\u3066\u611B\u3092\u7E4B\u3050\u56FD\u969B\u604B\u611B\xB7\u7D50\u5A5A\u30DE\u30C3\u30C1\u30F3\u30B0\u30D7\u30E9\u30C3\u30C8\u30D5\u30A9\u30FC\u30E0',
         'target-audience': '40\u4EE3\xB750\u4EE3\xB760\u4EE3\u30B7\u30F3\u30B0\u30EB\xB7\u30D0\u30C4\u30A4\u30C1\u306E\u30B0\u30ED\u30FC\u30D0\u30EB\u56FD\u969B\u604B\u611B\xB7\u7D50\u5A5A',
+        'notices-text': '\u304A\u77E5\u3089\u305B',
         'tab-register': '\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB\u767B\u9332',
         'tab-search': '\u30D7\u30ED\u30D5\u30A3\u30FC\u30EB\u691C\u7D22',
         'tab-stats': '\u7D71\u8A08',
@@ -2122,6 +2126,7 @@ function getMainPageHTML() {
         'main-title': 'Couple Gate',
         'main-subtitle': 'N\u1EC1n t\u1EA3ng h\u1EB9n h\xF2 & k\u1EBFt h\xF4n qu\u1ED1c t\u1EBF k\u1EBFt n\u1ED1i t\xECnh y\xEAu v\u01B0\u1EE3t bi\xEAn gi\u1EDBi',
         'target-audience': '\u0110\u1ED9c th\xE2n & ly h\xF4n \u1EDF \u0111\u1ED9 tu\u1ED5i 40, 50, 60 cho t\xECnh y\xEAu & h\xF4n nh\xE2n to\xE0n c\u1EA7u',
+        'notices-text': 'Th\xF4ng b\xE1o',
         'tab-register': '\u0110\u0103ng k\xFD',
         'tab-search': 'T\xECm ki\u1EBFm',
         'tab-stats': 'Th\u1ED1ng k\xEA',
@@ -2150,6 +2155,7 @@ function getMainPageHTML() {
         'main-title': 'Couple Gate',
         'main-subtitle': '\u0645\u0646\u0635\u0629 \u0627\u0644\u0645\u0648\u0627\u0639\u062F\u0629 \u0648\u0627\u0644\u0632\u0648\u0627\u062C \u0627\u0644\u062F\u0648\u0644\u064A\u0629 \u0627\u0644\u062A\u064A \u062A\u0631\u0628\u0637 \u0627\u0644\u062D\u0628 \u0639\u0628\u0631 \u0627\u0644\u062D\u062F\u0648\u062F',
         'target-audience': '\u0627\u0644\u0639\u0632\u0627\u0628 \u0648\u0627\u0644\u0645\u0637\u0644\u0642\u0648\u0646 \u0641\u064A \u0627\u0644\u0623\u0631\u0628\u0639\u064A\u0646\u064A\u0627\u062A \u0648\u0627\u0644\u062E\u0645\u0633\u064A\u0646\u064A\u0627\u062A \u0648\u0627\u0644\u0633\u062A\u064A\u0646\u064A\u0627\u062A \u0644\u0644\u0631\u0648\u0645\u0627\u0646\u0633\u064A\u0629 \u0648\u0627\u0644\u0632\u0648\u0627\u062C \u0627\u0644\u0639\u0627\u0644\u0645\u064A',
+        'notices-text': '\u0627\u0644\u0625\u0634\u0639\u0627\u0631\u0627\u062A',
         'tab-register': '\u062A\u0633\u062C\u064A\u0644',
         'tab-search': '\u0628\u062D\u062B',
         'tab-stats': '\u0625\u062D\u0635\u0627\u0626\u064A\u0627\u062A',

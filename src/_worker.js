@@ -308,8 +308,8 @@ function getMainPageHTML() {
           <option value="vi">Tiếng Việt</option>
           <option value="ar">العربية</option>
         </select>
-        <a href="/notices" class="ml-4 bg-white text-pink-600 px-4 py-2 rounded-lg shadow-lg hover:bg-pink-50 font-bold">
-          <i class="fas fa-bell"></i> <span class="hidden md:inline">공지사항</span>
+        <a href="/notices" class="ml-4 bg-white text-pink-600 px-4 py-2 rounded-lg shadow-lg hover:bg-pink-50 font-bold" id="notices-link">
+          <i class="fas fa-bell"></i> <span class="hidden md:inline" id="notices-text">공지사항</span>
         </a>
       </div>
       
@@ -507,6 +507,7 @@ function getMainPageHTML() {
         'main-title': 'Couple Gate',
         'main-subtitle': '국경을 넘어 사랑을 연결하는 국제 연애·결혼 매칭 플랫폼',
         'target-audience': '40대·50대·60대 싱글·돌싱 글로벌 국제 연애·결혼',
+        'notices-text': '공지사항',
         'tab-register': '프로필 등록',
         'tab-search': '프로필 찾기',
         'tab-stats': '통계',
@@ -535,6 +536,7 @@ function getMainPageHTML() {
         'main-title': 'Couple Gate',
         'main-subtitle': 'International Dating & Marriage Platform Connecting Love Across Borders',
         'target-audience': 'Singles & Divorcees in 40s, 50s, 60s for Global Romance & Marriage',
+        'notices-text': 'Notices',
         'tab-register': 'Register',
         'tab-search': 'Search',
         'tab-stats': 'Statistics',
@@ -563,6 +565,7 @@ function getMainPageHTML() {
         'main-title': 'Couple Gate',
         'main-subtitle': '跨越国境连接爱情的国际恋爱·婚姻配对平台',
         'target-audience': '40岁·50岁·60岁单身·离异全球国际恋爱·婚姻',
+        'notices-text': '公告',
         'tab-register': '注册资料',
         'tab-search': '查找资料',
         'tab-stats': '统计',
@@ -591,6 +594,7 @@ function getMainPageHTML() {
         'main-title': 'Couple Gate',
         'main-subtitle': '国境を越えて愛を繋ぐ国際恋愛·結婚マッチングプラットフォーム',
         'target-audience': '40代·50代·60代シングル·バツイチのグローバル国際恋愛·結婚',
+        'notices-text': 'お知らせ',
         'tab-register': 'プロフィール登録',
         'tab-search': 'プロフィール検索',
         'tab-stats': '統計',
@@ -619,6 +623,7 @@ function getMainPageHTML() {
         'main-title': 'Couple Gate',
         'main-subtitle': 'Nền tảng hẹn hò & kết hôn quốc tế kết nối tình yêu vượt biên giới',
         'target-audience': 'Độc thân & ly hôn ở độ tuổi 40, 50, 60 cho tình yêu & hôn nhân toàn cầu',
+        'notices-text': 'Thông báo',
         'tab-register': 'Đăng ký',
         'tab-search': 'Tìm kiếm',
         'tab-stats': 'Thống kê',
@@ -647,6 +652,7 @@ function getMainPageHTML() {
         'main-title': 'Couple Gate',
         'main-subtitle': 'منصة المواعدة والزواج الدولية التي تربط الحب عبر الحدود',
         'target-audience': 'العزاب والمطلقون في الأربعينيات والخمسينيات والستينيات للرومانسية والزواج العالمي',
+        'notices-text': 'الإشعارات',
         'tab-register': 'تسجيل',
         'tab-search': 'بحث',
         'tab-stats': 'إحصائيات',
