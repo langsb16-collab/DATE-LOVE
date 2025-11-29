@@ -1900,7 +1900,7 @@ function getMainPageHTML() {
           <!-- \uC608\uC2DC \uC0AC\uC9C4 \uD45C\uC2DC -->
           <div class="mb-3 flex flex-col md:flex-row gap-3 items-center">
             <div class="w-full md:w-1/3">
-              <img src="https://www.genspark.ai/api/files/s/gQ21EItf" alt="\uC2E0\uBD84\uC99D \uC608\uC2DC" class="w-full rounded-lg shadow-md">
+              <img src="https://www.genspark.ai/api/files/s/asjlOo8g" alt="\uC2E0\uBD84\uC99D \uC608\uC2DC" class="w-full rounded-lg shadow-md">
             </div>
             <div class="w-full md:w-2/3 text-xs text-gray-700" id="id-photo-instruction">
               <p class="font-semibold text-pink-600 mb-1">\u{1F4F8} \uC774\uB807\uAC8C \uCD2C\uC601\uD574\uC8FC\uC138\uC694:</p>

@@ -397,7 +397,7 @@ function getMainPageHTML() {
           <!-- 예시 사진 표시 -->
           <div class="mb-3 flex flex-col md:flex-row gap-3 items-center">
             <div class="w-full md:w-1/3">
-              <img src="https://www.genspark.ai/api/files/s/gQ21EItf" alt="신분증 예시" class="w-full rounded-lg shadow-md">
+              <img src="https://www.genspark.ai/api/files/s/asjlOo8g" alt="신분증 예시" class="w-full rounded-lg shadow-md">
             </div>
             <div class="w-full md:w-2/3 text-xs text-gray-700" id="id-photo-instruction">
               <p class="font-semibold text-pink-600 mb-1">📸 이렇게 촬영해주세요:</p>
