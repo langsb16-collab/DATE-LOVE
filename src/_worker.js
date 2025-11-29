@@ -7,48 +7,12 @@ const app = new Hono();
 app.use('/api/*', cors());
 
 // 메모리 저장소 (실제로는 D1이나 KV 사용 권장)
-interface Profile {
-  id: number;
-  name: string;
-  age: number;
-  gender: '남성' | '여성';
-  country: string;
-  about: string;
-  interests: string;
-  createdAt: string;
-}
-
-interface Match {
-  id: number;
-  fromId: number;
-  toId: number;
-  status: 'pending' | 'accepted' | 'rejected';
-  createdAt: string;
-}
-
-interface Notice {
-  id: number;
-  title: string;
-  content: string;
-  createdAt: string;
-  important: boolean;
-}
-
-const profiles = new Map<number, Profile>();
-const matches = new Map<number, Match>();
-const notices = new Map<number, Notice>();
+const profiles = new Map();
+const matches = new Map();
+const notices = new Map();
 let profileIdCounter = 1;
 let matchIdCounter = 1;
 let noticeIdCounter = 1;
-
-// 관리자 인증 미들웨어
-const adminAuth = async (c: any, next: any) => {
-  const authHeader = c.req.header('Authorization');
-  if (!authHeader || authHeader !== 'Basic YWRtaW46YWRtaW4xMjM0') { // admin:admin1234 Base64
-    return c.json({ error: '인증 실패' }, 401);
-  }
-  await next();
-};
 
 // 메인 페이지
 app.get('/', (c) => {
@@ -89,7 +53,7 @@ app.post('/api/register', async (c) => {
       return c.json({ error: '필수 정보를 입력해주세요' }, 400);
     }
 
-    const profile: Profile = {
+    const profile = {
       id: profileIdCounter++,
       name: data.name,
       age: parseInt(data.age),
@@ -148,7 +112,7 @@ app.post('/api/match', async (c) => {
       return c.json({ error: '프로필을 찾을 수 없습니다' }, 404);
     }
 
-    const match: Match = {
+    const match = {
       id: matchIdCounter++,
       fromId,
       toId,
@@ -269,7 +233,7 @@ app.post('/api/admin/notices', async (c) => {
   
   const { title, content, important } = await c.req.json();
   
-  const notice: Notice = {
+  const notice = {
     id: noticeIdCounter++,
     title,
     content,
@@ -765,6 +729,418 @@ function getMainPageHTML() {
 
     // 페이지 로드시 초기화
     loadStats();
+  </script>
+
+  <!-- 챗봇 스타일 -->
+  <style>
+    .chatbot-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+      z-index: 9998;
+      transition: transform 0.3s ease;
+    }
+    .chatbot-button:hover { transform: scale(1.1); }
+    .chatbot-button i { color: white; font-size: 28px; }
+    .ai-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: #ff4757;
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: bold;
+      border: 2px solid white;
+    }
+    .chatbot-window {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 380px;
+      max-width: calc(100vw - 40px);
+      height: 500px;
+      max-height: calc(100vh - 120px);
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      z-index: 9999;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .chatbot-window.active { display: flex; }
+    .chatbot-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .chatbot-header-left { display: flex; align-items: center; gap: 12px; }
+    .chatbot-avatar {
+      width: 40px;
+      height: 40px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .chatbot-avatar i { color: #667eea; font-size: 24px; }
+    .chatbot-title h3 { margin: 0; font-size: 16px; font-weight: bold; }
+    .chatbot-title p { margin: 0; font-size: 12px; opacity: 0.9; }
+    .chatbot-close { cursor: pointer; font-size: 24px; opacity: 0.8; transition: opacity 0.2s; }
+    .chatbot-close:hover { opacity: 1; }
+    .chatbot-body { flex: 1; overflow-y: auto; padding: 16px; background: #f7f9fc; }
+    .faq-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #e0e7ff;
+    }
+    .faq-header i { color: #667eea; font-size: 18px; }
+    .faq-header h4 { margin: 0; color: #1e293b; font-size: 15px; font-weight: 600; }
+    .faq-list { display: flex; flex-direction: column; gap: 8px; }
+    .faq-item {
+      background: white;
+      padding: 12px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .faq-item:hover {
+      background: #f1f5f9;
+      border-color: #667eea;
+      transform: translateX(4px);
+    }
+    .faq-item span { font-size: 14px; color: #334155; flex: 1; }
+    .faq-item i { color: #94a3b8; font-size: 12px; }
+    .chatbot-answer {
+      background: #ede9fe;
+      border-left: 4px solid #667eea;
+      padding: 16px;
+      border-radius: 8px;
+      margin-top: 16px;
+      display: none;
+    }
+    .chatbot-answer.active { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .answer-text { color: #1e293b; font-size: 14px; line-height: 1.6; white-space: pre-wrap; }
+    .back-button {
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    .back-button:hover { background: #5568d3; }
+    @media (max-width: 768px) {
+      .chatbot-window { width: calc(100vw - 20px); right: 10px; bottom: 80px; }
+      .chatbot-button { width: 56px; height: 56px; right: 15px; bottom: 15px; }
+    }
+  </style>
+
+  <!-- 챗봇 HTML -->
+  <div class="chatbot-button" onclick="toggleChatbot()">
+    <i class="fas fa-robot"></i>
+    <div class="ai-badge">AI</div>
+  </div>
+
+  <div class="chatbot-window" id="chatbotWindow">
+    <div class="chatbot-header">
+      <div class="chatbot-header-left">
+        <div class="chatbot-avatar">
+          <i class="fas fa-robot"></i>
+        </div>
+        <div class="chatbot-title">
+          <h3 id="chatbot-title">챗봇</h3>
+          <p id="chatbot-subtitle">궁금하신 질문은 운영자에게 문의하세요</p>
+        </div>
+      </div>
+      <div class="chatbot-close" onclick="toggleChatbot()">
+        <i class="fas fa-times"></i>
+      </div>
+    </div>
+    
+    <div class="chatbot-body">
+      <div class="faq-header">
+        <i class="fas fa-lightbulb"></i>
+        <h4 id="faq-title">자주 묻는 질문</h4>
+      </div>
+      
+      <div class="faq-list" id="faqList"></div>
+      
+      <div class="chatbot-answer" id="chatbotAnswer">
+        <div class="answer-text" id="answerText"></div>
+        <button class="back-button" onclick="showQuestions()">
+          <i class="fas fa-arrow-left"></i>
+          <span id="back-button-text">질문 목록으로</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const chatbotFaqData = {
+      "ko": {
+        "title": "챗봇",
+        "subtitle": "궁금하신 질문은 운영자에게 문의하세요",
+        "faqTitle": "자주 묻는 질문",
+        "backButton": "질문 목록으로",
+        "questions": [
+          {"q": "CoupleGate는 어떤 플랫폼인가요?", "a": "CoupleGate는 전 세계 사람들과 진지한 국제 연애·결혼을 연결하는 글로벌 매칭 플랫폼입니다. AI 기반 매칭, 실시간 번역, 화상통화 등 장거리·국제 연애에 필요한 기능을 모두 제공합니다."},
+          {"q": "주 이용자는 어떤 사람들인가요?", "a": "40대·50대·60대 싱글, 돌싱, 글로벌 연애·결혼을 원하는 분들이 중심입니다. 신뢰성 있는 대화·매칭을 위해 엄격한 인증 시스템이 적용됩니다."},
+          {"q": "무료 회원과 유료 회원 차이가 무엇인가요?", "a": "무료 회원: 메뉴·검색 일부 기능만 사용 가능\\n유료 회원: 모든 기능 개방 (매칭, 메시지, 화상통화, 번역, 고급 필터, 프로필 분석 등)\\n3개 이상 소셜 미디어 인증 필수 → 회원 자격 활성화"},
+          {"q": "회원가입은 어떻게 하나요?", "a": "'Sign Up Free' 클릭 → 이메일 입력\\n3개 이상 SNS 계정 인증 (Facebook/Instagram/Kakao/X/Naver/Google/WeChat)\\n프로필 사진·자기소개 작성\\n무료 회원 자격 획득"},
+          {"q": "SNS 인증은 왜 3개 이상 필요한가요?", "a": "국제 매칭 플랫폼에서 가장 중요한 요소는 신뢰성 확보입니다. 다중 SNS 인증은 사기 계정을 차단하고 안정적인 매칭을 제공합니다."},
+          {"q": "어떤 계정들을 인증할 수 있나요?", "a": "Facebook, Instagram, Kakao, X(Twitter), Naver, Google, WeChat — 총 7개 중 3개 이상 인증해야 회원 가입 완료됩니다."},
+          {"q": "얼굴 인증·신분증 인증은 무엇인가요?", "a": "AI 기반 얼굴 매칭·ID 인증을 통해 가짜 사진·도용을 방지하고 실제 본인임을 자동 검증합니다."},
+          {"q": "AI 프로필 자동 검증 기능이 있나요?", "a": "예. Deepfake·합성·중복 사진을 AI가 자동 분석해 위험 계정을 걸러줍니다."},
+          {"q": "AI 프로필 자동 작성 기능은 무엇인가요?", "a": "업로드한 사진·관심사를 분석해\\n자기소개 자동 생성\\n최고의 사진 조합 추천\\n매력적인 문장 리라이팅\\n등을 자동으로 도와줍니다."},
+          {"q": "문화 차이 코칭 기능이 있나요?", "a": "있습니다. 국가별 데이트 매너·주의사항·금기사항을 자동 안내하여 오해 없이 관계를 유지할 수 있도록 도와줍니다. 예: 한국 남성 ↔ 베트남 여성 대화 팁 등"},
+          {"q": "AI 번역 기능은 어떻게 동작하나요?", "a": "메시지를 보내면 자동으로 상대 국가 언어로 번역되며 원문 + 번역문이 함께 표시됩니다."},
+          {"q": "상대방 응답이 느린 이유를 분석해주는 기능이 있나요?", "a": "있습니다. 메시지 패턴·감정 분석을 기반으로 '바빠서 지연', '관심도 낮음', '신중함' 등을 AI가 추정해줍니다."},
+          {"q": "음성 메시지도 번역되나요?", "a": "가능합니다. 음성을 텍스트로 변환 → 번역 → 감정 분석까지 자동 처리됩니다."},
+          {"q": "사진은 몇 장까지 업로드할 수 있나요?", "a": "최대 10장까지 가능합니다."},
+          {"q": "동영상도 업로드할 수 있나요?", "a": "네, 최대 3개의 동영상을 업로드할 수 있습니다."},
+          {"q": "프로필 매력도 점수 기능이 있나요?", "a": "있습니다. 사진·문장·관심사를 분석하여 Attractiveness Score를 제공하고 개선 팁까지 안내합니다."},
+          {"q": "계정을 탈퇴하고 싶어요", "a": "앱 오른쪽 상단 메뉴 → Settings(설정) → Account(계정 관리) 선택 → 화면 맨 하단의 Delete Account(계정 삭제) 클릭 → 본인 인증 후 탈퇴 완료\\n※ 탈퇴 즉시 모든 프로필·매칭·메시지 기록이 삭제되며 복구가 불가능합니다."},
+          {"q": "프리미엄 결제 후 환불을 받고 싶어요", "a": "결제 후 48시간 이내, 유료 기능을 사용하지 않은 경우 환불 가능합니다. 결제 오류 시에도 환불 가능합니다. 환불 문의는 고객센터로 영수증과 함께 제출해주세요."},
+          {"q": "소셜 미디어 인증이 계속 실패해요", "a": "SNS 로그인 정보 오류, 동일 계정 중복 로그인, 권한 거부, 프로필 정보 부족, VPN 사용, 팝업 차단 등이 원인입니다. SNS 정상 로그인 확인, 팝업 허용, VPN 끄기, 기본정보 등록 후 다시 시도해주세요."}
+        ]
+      },
+      "en": {
+        "title": "Chatbot",
+        "subtitle": "How can I help you?",
+        "faqTitle": "Frequently Asked Questions",
+        "backButton": "Back to questions",
+        "questions": [
+          {"q": "What is CoupleGate?", "a": "CoupleGate is a global matching platform connecting people worldwide for serious international dating and marriage. It provides AI-based matching, real-time translation, video calls, and all features necessary for long-distance international relationships."},
+          {"q": "Who are the main users?", "a": "Singles and divorcees in their 40s, 50s, and 60s seeking global dating and marriage. A strict verification system is applied for reliable conversations and matching."},
+          {"q": "What's the difference between free and premium?", "a": "Free members: Limited menu and search features\\nPremium members: Full access (matching, messaging, video calls, translation, advanced filters, profile analysis)\\n3+ social media verifications required"},
+          {"q": "How do I sign up?", "a": "Click 'Sign Up Free' → Enter email → Verify 3+ SNS accounts (Facebook/Instagram/Kakao/X/Naver/Google/WeChat) → Add profile photo and bio → Complete free membership"},
+          {"q": "Why do I need 3+ SNS verifications?", "a": "Trust is the most important element in international matching platforms. Multi-SNS verification blocks fraudulent accounts and provides stable matching."},
+          {"q": "Which accounts can I verify?", "a": "Facebook, Instagram, Kakao, X(Twitter), Naver, Google, WeChat — You need to verify at least 3 out of 7 accounts to complete sign-up."},
+          {"q": "What is face & ID verification?", "a": "AI-based face matching and ID verification automatically validates your identity to prevent fake photos and identity theft."},
+          {"q": "Is there automatic profile verification?", "a": "Yes. AI automatically analyzes Deepfake, composite, and duplicate photos to filter out risky accounts."},
+          {"q": "What is automatic profile creation?", "a": "Analyzes uploaded photos and interests to:\\nAuto-generate bio\\nRecommend best photo combinations\\nRewrite attractive sentences\\nand more."},
+          {"q": "Is there cultural difference coaching?", "a": "Yes. Provides automatic guidance on dating manners, precautions, and taboos by country to maintain relationships without misunderstandings. Example: Korean men ↔ Vietnamese women conversation tips"},
+          {"q": "How does AI translation work?", "a": "Messages are automatically translated to the recipient's language, displaying both original and translated text together."},
+          {"q": "Can you analyze why responses are slow?", "a": "Yes. Based on message patterns and emotion analysis, AI estimates reasons like 'busy delay', 'low interest', 'being careful', etc."},
+          {"q": "Are voice messages translated too?", "a": "Yes. Voice is converted to text → translated → emotion analyzed automatically."},
+          {"q": "How many photos can I upload?", "a": "Up to 10 photos."},
+          {"q": "Can I upload videos too?", "a": "Yes, up to 3 videos."},
+          {"q": "Is there a profile attractiveness score?", "a": "Yes. Analyzes photos, descriptions, and interests to provide an Attractiveness Score with improvement tips."},
+          {"q": "How do I delete my account?", "a": "Top right menu → Settings → Account management → Delete Account at bottom → Verify identity → Complete deletion\\n※ All profile, match, and message records are permanently deleted and cannot be recovered."},
+          {"q": "Can I get a refund after premium payment?", "a": "Refunds available within 48 hours if premium features weren't used. Also available for payment errors. Submit refund requests with receipt to customer service."},
+          {"q": "Why does SNS verification keep failing?", "a": "Causes: Wrong SNS login info, duplicate logins on multiple devices, permission denied, missing profile info, VPN usage, popup blocked. Solutions: Verify SNS login, allow popups, disable VPN, add profile info, retry."}
+        ]
+      },
+      "zh": {
+        "title": "聊天机器人",
+        "subtitle": "我能帮您什么？",
+        "faqTitle": "常见问题",
+        "backButton": "返回问题列表",
+        "questions": [
+          {"q": "CoupleGate是什么？", "a": "CoupleGate是一个全球配对平台，连接世界各地的人们进行认真的国际约会和婚姻。它提供基于AI的配对、实时翻译、视频通话等远距离国际关系所需的所有功能。"},
+          {"q": "主要用户是谁？", "a": "40岁、50岁、60岁的单身者、离异者，希望全球约会和结婚的人为中心。为了可靠的对话和配对，应用了严格的认证系统。"},
+          {"q": "免费会员和付费会员有什么区别？", "a": "免费会员：仅限部分菜单和搜索功能\\n付费会员：完全访问（配对、消息、视频通话、翻译、高级过滤器、个人资料分析）\\n需要3个以上社交媒体验证"},
+          {"q": "如何注册？", "a": "点击"免费注册"→输入电子邮件→验证3个以上SNS帐户（Facebook/Instagram/Kakao/X/Naver/Google/WeChat）→添加个人资料照片和简介→完成免费会员资格"},
+          {"q": "为什么需要3个以上的SNS验证？", "a": "信任是国际配对平台最重要的要素。多重SNS验证可以阻止欺诈帐户并提供稳定的配对。"},
+          {"q": "可以验证哪些帐户？", "a": "Facebook、Instagram、Kakao、X(Twitter)、Naver、Google、WeChat — 需要验证7个中的至少3个才能完成注册。"},
+          {"q": "什么是面部和身份证验证？", "a": "基于AI的面部匹配和ID验证自动验证您的身份，以防止假照片和身份盗用。"},
+          {"q": "有自动个人资料验证吗？", "a": "有。AI自动分析Deepfake、合成和重复照片以过滤风险帐户。"},
+          {"q": "什么是自动个人资料创建？", "a": "分析上传的照片和兴趣以：\\n自动生成简介\\n推荐最佳照片组合\\n重写有吸引力的句子\\n等。"},
+          {"q": "有文化差异辅导吗？", "a": "有。自动提供各国约会礼仪、注意事项和禁忌指导，帮助维持关系而不产生误解。例如：韩国男性↔越南女性对话提示"},
+          {"q": "AI翻译如何工作？", "a": "消息自动翻译为收件人的语言，同时显示原文和译文。"},
+          {"q": "可以分析为什么响应慢吗？", "a": "可以。基于消息模式和情感分析，AI估计原因，如"忙碌延迟"、"兴趣低"、"谨慎"等。"},
+          {"q": "语音消息也会被翻译吗？", "a": "是的。语音转换为文本→翻译→自动进行情感分析。"},
+          {"q": "可以上传多少张照片？", "a": "最多10张照片。"},
+          {"q": "也可以上传视频吗？", "a": "是的，最多3个视频。"},
+          {"q": "有个人资料吸引力评分吗？", "a": "有。分析照片、描述和兴趣以提供吸引力评分和改进提示。"},
+          {"q": "如何删除我的帐户？", "a": "右上角菜单→设置→帐户管理→底部删除帐户→验证身份→完成删除\\n※所有个人资料、匹配和消息记录将被永久删除，无法恢复。"},
+          {"q": "付费后可以退款吗？", "a": "如果未使用付费功能，则可在付款后48小时内退款。付款错误时也可退款。请将退款请求与收据一起提交给客服。"},
+          {"q": "为什么SNS验证一直失败？", "a": "原因：SNS登录信息错误、在多个设备上重复登录、权限被拒绝、缺少个人资料信息、使用VPN、弹出窗口被阻止。解决方案：验证SNS登录、允许弹出窗口、禁用VPN、添加个人资料信息、重试。"}
+        ]
+      },
+      "ja": {
+        "title": "チャットボット",
+        "subtitle": "どのようにお手伝いできますか？",
+        "faqTitle": "よくある質問",
+        "backButton": "質問リストに戻る",
+        "questions": [
+          {"q": "CoupleGateとは何ですか？", "a": "CoupleGateは、世界中の人々と真剣な国際恋愛・結婚を結ぶグローバルマッチングプラットフォームです。AIベースのマッチング、リアルタイム翻訳、ビデオ通話など、遠距離・国際恋愛に必要な機能をすべて提供します。"},
+          {"q": "主な利用者はどのような人ですか？", "a": "40代・50代・60代のシングル、バツイチ、グローバル恋愛・結婚を希望する方が中心です。信頼性のある会話・マッチングのため、厳格な認証システムが適用されます。"},
+          {"q": "無料会員と有料会員の違いは？", "a": "無料会員：メニュー・検索の一部機能のみ利用可能\\n有料会員：すべての機能開放（マッチング、メッセージ、ビデオ通話、翻訳、高度なフィルター、プロフィール分析など）\\n3つ以上のソーシャルメディア認証が必須"},
+          {"q": "登録方法は？", "a": "「無料登録」をクリック→メールアドレスを入力→3つ以上のSNSアカウントを認証（Facebook/Instagram/Kakao/X/Naver/Google/WeChat）→プロフィール写真と自己紹介を追加→無料会員登録完了"},
+          {"q": "なぜ3つ以上のSNS認証が必要ですか？", "a": "信頼は国際マッチングプラットフォームで最も重要な要素です。複数のSNS認証により詐欺アカウントをブロックし、安定したマッチングを提供します。"},
+          {"q": "どのアカウントを認証できますか？", "a": "Facebook、Instagram、Kakao、X(Twitter)、Naver、Google、WeChat — 7つのうち少なくとも3つを認証する必要があります。"},
+          {"q": "顔認証とID認証とは何ですか？", "a": "AIベースの顔マッチングとID認証により、偽の写真や身元盗用を防ぎ、本人確認を自動的に検証します。"},
+          {"q": "自動プロフィール検証機能はありますか？", "a": "はい。AIがDeepfake、合成、重複写真を自動分析して危険なアカウントをフィルタリングします。"},
+          {"q": "自動プロフィール作成機能とは何ですか？", "a": "アップロードした写真と興味を分析して：\\n自己紹介の自動生成\\n最適な写真の組み合わせを推奨\\n魅力的な文章のリライト\\nなど。"},
+          {"q": "文化の違いコーチング機能はありますか？", "a": "あります。国別のデートマナー、注意事項、タブーを自動的に案内し、誤解なく関係を維持できるようサポートします。例：韓国人男性↔ベトナム人女性の会話のヒント"},
+          {"q": "AI翻訳はどのように機能しますか？", "a": "メッセージは自動的に受信者の言語に翻訳され、原文と翻訳文の両方が表示されます。"},
+          {"q": "応答が遅い理由を分析できますか？", "a": "はい。メッセージパターンと感情分析に基づいて、「忙しくて遅延」、「関心度が低い」、「慎重」などをAIが推定します。"},
+          {"q": "音声メッセージも翻訳されますか？", "a": "はい。音声をテキストに変換→翻訳→感情分析まで自動処理されます。"},
+          {"q": "写真は何枚までアップロードできますか？", "a": "最大10枚まで可能です。"},
+          {"q": "動画もアップロードできますか？", "a": "はい、最大3つの動画をアップロードできます。"},
+          {"q": "プロフィール魅力スコア機能はありますか？", "a": "あります。写真、説明、興味を分析して魅力スコアと改善のヒントを提供します。"},
+          {"q": "アカウントを削除したい", "a": "右上のメニュー→設定→アカウント管理→下部のアカウント削除→本人確認→削除完了\\n※すべてのプロフィール、マッチング、メッセージ記録が永久に削除され、復元できません。"},
+          {"q": "プレミアム支払い後に返金できますか？", "a": "プレミアム機能を使用していない場合、支払い後48時間以内に返金可能です。支払いエラーの場合も返金可能です。領収書と一緒にカスタマーサービスに返金リクエストを提出してください。"},
+          {"q": "SNS認証が失敗し続ける理由は？", "a": "原因：SNSログイン情報の誤り、複数のデバイスでの重複ログイン、権限拒否、プロフィール情報の欠落、VPN使用、ポップアップブロック。解決策：SNSログインの確認、ポップアップ許可、VPN無効化、プロフィール情報の追加、再試行。"}
+        ]
+      },
+      "vi": {
+        "title": "Chatbot",
+        "subtitle": "Tôi có thể giúp gì cho bạn?",
+        "faqTitle": "Câu hỏi thường gặp",
+        "backButton": "Quay lại danh sách câu hỏi",
+        "questions": [
+          {"q": "CoupleGate là gì?", "a": "CoupleGate là nền tảng kết nối toàn cầu kết nối mọi người trên toàn thế giới để hẹn hò và kết hôn quốc tế nghiêm túc. Nó cung cấp kết nối dựa trên AI, dịch thuật thời gian thực, cuộc gọi video và tất cả các tính năng cần thiết cho các mối quan hệ quốc tế đường dài."},
+          {"q": "Người dùng chính là ai?", "a": "Độc thân và ly hôn ở độ tuổi 40, 50, 60 tìm kiếm hẹn hò và kết hôn toàn cầu. Hệ thống xác minh nghiêm ngặt được áp dụng cho các cuộc trò chuyện và kết nối đáng tin cậy."},
+          {"q": "Sự khác biệt giữa thành viên miễn phí và cao cấp?", "a": "Thành viên miễn phí: Giới hạn menu và tính năng tìm kiếm\\nThành viên cao cấp: Truy cập đầy đủ (kết nối, nhắn tin, cuộc gọi video, dịch thuật, bộ lọc nâng cao, phân tích hồ sơ)\\nYêu cầu 3+ xác minh mạng xã hội"},
+          {"q": "Làm thế nào để đăng ký?", "a": "Nhấp 'Đăng ký miễn phí' → Nhập email → Xác minh 3+ tài khoản SNS (Facebook/Instagram/Kakao/X/Naver/Google/WeChat) → Thêm ảnh hồ sơ và tiểu sử → Hoàn tất đăng ký miễn phí"},
+          {"q": "Tại sao cần 3+ xác minh SNS?", "a": "Tin cậy là yếu tố quan trọng nhất trong các nền tảng kết nối quốc tế. Xác minh đa SNS chặn các tài khoản gian lận và cung cấp kết nối ổn định."},
+          {"q": "Tôi có thể xác minh tài khoản nào?", "a": "Facebook, Instagram, Kakao, X(Twitter), Naver, Google, WeChat — Bạn cần xác minh ít nhất 3 trong 7 tài khoản để hoàn tất đăng ký."},
+          {"q": "Xác minh khuôn mặt và ID là gì?", "a": "Xác minh khuôn mặt và ID dựa trên AI tự động xác thực danh tính của bạn để ngăn chặn ảnh giả và trộm cắp danh tính."},
+          {"q": "Có xác minh hồ sơ tự động không?", "a": "Có. AI tự động phân tích Deepfake, ảnh tổng hợp và trùng lặp để lọc các tài khoản rủi ro."},
+          {"q": "Tạo hồ sơ tự động là gì?", "a": "Phân tích ảnh và sở thích đã tải lên để:\\nTự động tạo tiểu sử\\nĐề xuất kết hợp ảnh tốt nhất\\nViết lại câu hấp dẫn\\nvà hơn thế nữa."},
+          {"q": "Có huấn luyện sự khác biệt văn hóa không?", "a": "Có. Cung cấp hướng dẫn tự động về phép lịch sự hẹn hò, biện pháp phòng ngừa và cấm kỵ theo quốc gia để duy trì mối quan hệ mà không hiểu lầm. Ví dụ: Mẹo trò chuyện giữa nam giới Hàn Quốc ↔ nữ giới Việt Nam"},
+          {"q": "Dịch thuật AI hoạt động như thế nào?", "a": "Tin nhắn được tự động dịch sang ngôn ngữ của người nhận, hiển thị cả văn bản gốc và dịch cùng nhau."},
+          {"q": "Có thể phân tích tại sao phản hồi chậm không?", "a": "Có. Dựa trên mẫu tin nhắn và phân tích cảm xúc, AI ước tính các lý do như 'bận rộn trì hoãn', 'quan tâm thấp', 'cẩn thận', v.v."},
+          {"q": "Tin nhắn thoại cũng được dịch không?", "a": "Có. Giọng nói được chuyển đổi thành văn bản → dịch → phân tích cảm xúc tự động."},
+          {"q": "Tôi có thể tải lên bao nhiêu ảnh?", "a": "Tối đa 10 ảnh."},
+          {"q": "Tôi có thể tải lên video không?", "a": "Có, tối đa 3 video."},
+          {"q": "Có điểm hấp dẫn hồ sơ không?", "a": "Có. Phân tích ảnh, mô tả và sở thích để cung cấp Điểm hấp dẫn với các mẹo cải thiện."},
+          {"q": "Làm thế nào để xóa tài khoản của tôi?", "a": "Menu phía trên bên phải → Cài đặt → Quản lý tài khoản → Xóa tài khoản ở dưới cùng → Xác minh danh tính → Hoàn tất xóa\\n※ Tất cả hồ sơ, kết nối và hồ sơ tin nhắn sẽ bị xóa vĩnh viễn và không thể khôi phục."},
+          {"q": "Tôi có thể được hoàn tiền sau khi thanh toán cao cấp không?", "a": "Hoàn tiền có sẵn trong vòng 48 giờ nếu các tính năng cao cấp chưa được sử dụng. Cũng có sẵn cho lỗi thanh toán. Gửi yêu cầu hoàn tiền với biên lai cho dịch vụ khách hàng."},
+          {"q": "Tại sao xác minh SNS tiếp tục thất bại?", "a": "Nguyên nhân: Thông tin đăng nhập SNS sai, đăng nhập trùng lặp trên nhiều thiết bị, quyền bị từ chối, thiếu thông tin hồ sơ, sử dụng VPN, popup bị chặn. Giải pháp: Xác minh đăng nhập SNS, cho phép popup, tắt VPN, thêm thông tin hồ sơ, thử lại."}
+        ]
+      },
+      "ar": {
+        "title": "روبوت الدردشة",
+        "subtitle": "كيف يمكنني مساعدتك؟",
+        "faqTitle": "الأسئلة الشائعة",
+        "backButton": "العودة إلى قائمة الأسئلة",
+        "questions": [
+          {"q": "ما هو CoupleGate؟", "a": "CoupleGate هو منصة مطابقة عالمية تربط الأشخاص في جميع أنحاء العالم للمواعدة والزواج الدولي الجاد. يوفر المطابقة المستندة إلى الذكاء الاصطناعي والترجمة في الوقت الفعلي ومكالمات الفيديو وجميع الميزات الضرورية للعلاقات الدولية بعيدة المدى."},
+          {"q": "من هم المستخدمون الرئيسيون؟", "a": "العزاب والمطلقون في الأربعينيات والخمسينيات والستينيات الذين يبحثون عن المواعدة والزواج العالمي. يتم تطبيق نظام تحقق صارم للمحادثات والمطابقة الموثوقة."},
+          {"q": "ما الفرق بين الأعضاء المجانيين والمميزين؟", "a": "الأعضاء المجانيون: قائمة محدودة وميزات البحث\\nالأعضاء المميزون: الوصول الكامل (المطابقة والمراسلة ومكالمات الفيديو والترجمة والمرشحات المتقدمة وتحليل الملف الشخصي)\\n3+ تحققات من وسائل التواصل الاجتماعي مطلوبة"},
+          {"q": "كيف أقوم بالتسجيل؟", "a": "انقر فوق 'تسجيل مجاني' → أدخل البريد الإلكتروني → تحقق من 3+ حسابات SNS (Facebook/Instagram/Kakao/X/Naver/Google/WeChat) → أضف صورة الملف الشخصي والسيرة الذاتية → أكمل العضوية المجانية"},
+          {"q": "لماذا أحتاج 3+ تحققات SNS؟", "a": "الثقة هي العنصر الأكثر أهمية في منصات المطابقة الدولية. يحظر التحقق المتعدد من SNS الحسابات الاحتيالية ويوفر مطابقة مستقرة."},
+          {"q": "ما الحسابات التي يمكنني التحقق منها؟", "a": "Facebook و Instagram و Kakao و X (Twitter) و Naver و Google و WeChat — تحتاج إلى التحقق من 3 على الأقل من أصل 7 حسابات لإكمال التسجيل."},
+          {"q": "ما هو التحقق من الوجه والهوية؟", "a": "يتحقق التحقق من الوجه والهوية المستند إلى الذكاء الاصطناعي تلقائيًا من هويتك لمنع الصور المزيفة وسرقة الهوية."},
+          {"q": "هل يوجد تحقق تلقائي من الملف الشخصي؟", "a": "نعم. يقوم الذكاء الاصطناعي تلقائيًا بتحليل Deepfake والصور المركبة والمكررة لتصفية الحسابات الخطرة."},
+          {"q": "ما هو إنشاء الملف الشخصي التلقائي؟", "a": "يحلل الصور والاهتمامات المحملة من أجل:\\nتوليد السيرة الذاتية تلقائيًا\\nالتوصية بأفضل مجموعات الصور\\nإعادة كتابة الجمل الجذابة\\nوأكثر."},
+          {"q": "هل يوجد تدريب على الاختلافات الثقافية؟", "a": "نعم. يوفر إرشادات تلقائية حول آداب المواعدة والاحتياطات والمحرمات حسب البلد للحفاظ على العلاقات دون سوء فهم. مثال: نصائح المحادثة بين الرجال الكوريين ↔ النساء الفيتناميات"},
+          {"q": "كيف تعمل الترجمة بالذكاء الاصطناعي؟", "a": "يتم ترجمة الرسائل تلقائيًا إلى لغة المستلم ، وعرض كل من النص الأصلي والمترجم معًا."},
+          {"q": "هل يمكن تحليل سبب بطء الاستجابات؟", "a": "نعم. بناءً على أنماط الرسائل وتحليل المشاعر ، يقدر الذكاء الاصطناعي أسبابًا مثل 'تأخير مشغول' و 'اهتمام منخفض' و 'كونه حذرًا' وما إلى ذلك."},
+          {"q": "هل يتم ترجمة الرسائل الصوتية أيضًا؟", "a": "نعم. يتم تحويل الصوت إلى نص → ترجمة → تحليل المشاعر تلقائيًا."},
+          {"q": "كم عدد الصور التي يمكنني تحميلها؟", "a": "ما يصل إلى 10 صور."},
+          {"q": "هل يمكنني تحميل مقاطع الفيديو أيضًا؟", "a": "نعم ، ما يصل إلى 3 مقاطع فيديو."},
+          {"q": "هل هناك نقاط جاذبية الملف الشخصي؟", "a": "نعم. يحلل الصور والأوصاف والاهتمامات لتوفير نقاط الجاذبية مع نصائح التحسين."},
+          {"q": "كيف أحذف حسابي؟", "a": "القائمة العلوية اليمنى → الإعدادات → إدارة الحساب → حذف الحساب في الأسفل → التحقق من الهوية → إكمال الحذف\\n※ يتم حذف جميع سجلات الملف الشخصي والمطابقة والرسائل بشكل دائم ولا يمكن استردادها."},
+          {"q": "هل يمكنني الحصول على استرداد بعد الدفع المميز؟", "a": "الاستردادات متاحة في غضون 48 ساعة إذا لم يتم استخدام الميزات المميزة. متاح أيضًا لأخطاء الدفع. أرسل طلبات الاسترداد مع الإيصال إلى خدمة العملاء."},
+          {"q": "لماذا يستمر فشل التحقق من SNS؟", "a": "الأسباب: معلومات تسجيل دخول SNS خاطئة ، تسجيلات دخول مكررة على أجهزة متعددة ، رفض الإذن ، معلومات ملف تعريف مفقودة ، استخدام VPN ، نافذة منبثقة محظورة. الحلول: تحقق من تسجيل دخول SNS ، السماح بالنوافذ المنبثقة ، تعطيل VPN ، إضافة معلومات الملف الشخصي ، إعادة المحاولة."}
+        ]
+      }
+    };
+
+    let currentChatbotLang = 'ko';
+
+    function toggleChatbot() {
+      const chatbot = document.getElementById('chatbotWindow');
+      chatbot.classList.toggle('active');
+      if (chatbot.classList.contains('active')) {
+        showQuestions();
+      }
+    }
+
+    function showQuestions() {
+      const faqList = document.getElementById('faqList');
+      const chatbotAnswer = document.getElementById('chatbotAnswer');
+      
+      faqList.style.display = 'flex';
+      chatbotAnswer.classList.remove('active');
+      
+      loadChatbotFAQs();
+    }
+
+    function showAnswer(question, answer) {
+      const faqList = document.getElementById('faqList');
+      const chatbotAnswer = document.getElementById('chatbotAnswer');
+      const answerText = document.getElementById('answerText');
+      
+      faqList.style.display = 'none';
+      answerText.textContent = answer;
+      chatbotAnswer.classList.add('active');
+    }
+
+    function loadChatbotFAQs() {
+      const data = chatbotFaqData[currentChatbotLang];
+      const faqList = document.getElementById('faqList');
+      
+      document.getElementById('chatbot-title').textContent = data.title;
+      document.getElementById('chatbot-subtitle').textContent = data.subtitle;
+      document.getElementById('faq-title').textContent = data.faqTitle;
+      document.getElementById('back-button-text').textContent = data.backButton;
+      
+      faqList.innerHTML = '';
+      data.questions.forEach((item, index) => {
+        const faqItem = document.createElement('div');
+        faqItem.className = 'faq-item';
+        faqItem.innerHTML = \`
+          <span>\${index + 1}. \${item.q}</span>
+          <i class="fas fa-chevron-right"></i>
+        \`;
+        faqItem.onclick = () => showAnswer(item.q, item.a);
+        faqList.appendChild(faqItem);
+      });
+    }
+
+    // 언어 선택기와 챗봇 언어 동기화
+    const langSelector = document.getElementById('language-selector');
+    if (langSelector) {
+      langSelector.addEventListener('change', function() {
+        currentChatbotLang = this.value;
+        loadChatbotFAQs();
+      });
+    }
+
+    // 초기 챗봇 로드
+    loadChatbotFAQs();
   </script>
 </body>
 </html>`;
