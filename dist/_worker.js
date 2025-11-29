@@ -200,13 +200,13 @@ function getHomePage() {
       <!-- 언어 선택 -->
       <div class="flex justify-end mb-3 sm:mb-4">
         <select id="language-selector" onchange="changeLanguage(this.value)" 
-          class="bg-white/20 text-white border border-white/30 rounded-lg px-3 py-1.5 text-sm backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white/50">
-          <option value="ko">🇰🇷 한국어</option>
-          <option value="en">🇺🇸 English</option>
-          <option value="zh">🇨🇳 中文</option>
-          <option value="ja">🇯🇵 日本語</option>
-          <option value="vi">🇻🇳 Tiếng Việt</option>
-          <option value="ar">🇸🇦 العربية</option>
+          class="bg-white text-gray-800 border-2 border-pink-300 rounded-lg px-3 py-2 text-sm font-semibold shadow-lg focus:outline-none focus:ring-2 focus:ring-pink-500 cursor-pointer hover:bg-pink-50 transition">
+          <option value="ko" class="text-gray-800">🇰🇷 한국어</option>
+          <option value="en" class="text-gray-800">🇺🇸 English</option>
+          <option value="zh" class="text-gray-800">🇨🇳 中文</option>
+          <option value="ja" class="text-gray-800">🇯🇵 日本語</option>
+          <option value="vi" class="text-gray-800">🇻🇳 Tiếng Việt</option>
+          <option value="ar" class="text-gray-800">🇸🇦 العربية</option>
         </select>
       </div>
       
